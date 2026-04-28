@@ -57,6 +57,10 @@ type PaginatedResponse<T> = {
   results: T[];
 };
 
+function isBrowser() {
+  return typeof window !== "undefined";
+}
+
 function getApiBaseUrl() {
   const configuredBaseUrl =
     process.env.NEXT_PUBLIC_DJANGO_API_BASE_URL ??
@@ -75,6 +79,30 @@ function getApiBaseUrl() {
 
 function isPaginated<T>(data: unknown): data is PaginatedResponse<T> {
   return typeof data === "object" && data !== null && "results" in data;
+}
+
+async function fetchFromFrontendApi<T>(
+  path: string,
+  init?: RequestInit,
+): Promise<T | null> {
+  try {
+    const response = await fetch(path, {
+      ...init,
+      headers: {
+        "Content-Type": "application/json",
+        ...(init?.headers ?? {}),
+      },
+      cache: init?.cache ?? "no-store",
+    });
+
+    if (!response.ok) {
+      return null;
+    }
+
+    return (await response.json()) as T;
+  } catch {
+    return null;
+  }
 }
 
 async function fetchFromDjango<T>(
@@ -145,6 +173,18 @@ function formatPublishedDate(value: string) {
 }
 
 export async function getServices() {
+  if (isBrowser()) {
+    const frontendData = await fetchFromFrontendApi<
+      PaginatedResponse<DjangoService> | DjangoService[]
+    >("/api/services");
+
+    if (frontendData) {
+      return isPaginated<DjangoService>(frontendData)
+        ? frontendData.results
+        : frontendData;
+    }
+  }
+
   const data = await fetchFromDjango<PaginatedResponse<DjangoService> | DjangoService[]>(
     "/services/",
   );
@@ -335,6 +375,24 @@ export async function submitAppointmentRequest(payload: {
   preferredTime: string;
   message: string;
 }) {
+  if (isBrowser()) {
+    return fetchFromFrontendApi<{ detail: string }>("/api/appointments", {
+      method: "POST",
+      body: JSON.stringify({
+        name: payload.name,
+        address: payload.address,
+        phone: payload.phone,
+        email: payload.email,
+        country: payload.country,
+        office: payload.office,
+        service_id: payload.serviceId || null,
+        preferred_date: payload.preferredDate,
+        preferred_time: payload.preferredTime || null,
+        message: payload.message,
+      }),
+    });
+  }
+
   return postToDjango<{ detail: string }>("/appointments/", {
       name: payload.name,
       address: payload.address,
