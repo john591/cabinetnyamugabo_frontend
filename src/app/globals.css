@@ -1,26 +1,311 @@
 @import "tailwindcss";
+@import "mapbox-gl/dist/mapbox-gl.css";
+@import "swiper/css";
+@import "swiper/css/pagination";
+@import "swiper/css/navigation";
+
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f7faf5;
+  --foreground: #24303a;
+  --muted: #627180;
+  --line: rgba(13, 69, 149, 0.14);
+  --brand-blue: #0d4595;
+  --brand-green: #299122;
+  --brand-gold: #7fd35a;
+  --brand-ink: #34383d;
+  --brand-soft: #f5faf2;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --font-sans: "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif;
+  --font-serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia,
+    serif;
+  --font-mono: "SFMono-Regular", "Menlo", "Monaco", "Liberation Mono",
+    monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background:
+    radial-gradient(circle at top, rgba(13, 69, 149, 0.1), transparent 30%),
+    linear-gradient(180deg, #ffffff 0%, #f5faf2 100%);
 }
 
 body {
-  background: var(--background);
+  min-height: 100vh;
+  background: transparent;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+::selection {
+  background: rgba(13, 69, 149, 0.22);
+}
+
+.adress-map .mapboxgl-canvas {
+  filter: saturate(0.92) contrast(1.02);
+}
+
+.adress-map .mapboxgl-ctrl-top-right {
+  top: 1rem;
+  right: 1rem;
+}
+
+.adress-map .mapboxgl-ctrl-group {
+  overflow: hidden;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 999px;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.14);
+}
+
+.adress-map .mapboxgl-ctrl-group button {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.adress-map .mapboxgl-ctrl-group button + button {
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.adress-map .mapboxgl-ctrl-group button:hover {
+  background: #f8fafc;
+}
+
+.adress-map .mapboxgl-ctrl button .mapboxgl-ctrl-icon {
+  opacity: 0.8;
+}
+
+.adress-map .mapboxgl-ctrl-bottom-left,
+.adress-map .mapboxgl-ctrl-bottom-right {
+  bottom: 0.5rem;
+}
+
+.adress-map__marker {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  border: 4px solid #ffffff;
+  border-radius: 999px;
+  background: var(--brand-green);
+  box-shadow: 0 14px 28px rgba(41, 145, 34, 0.28);
+}
+
+.adress-map__marker::after {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border: 1px solid rgba(41, 145, 34, 0.28);
+  border-radius: 999px;
+}
+
+.adress-map__popup .mapboxgl-popup-content {
+  min-width: 240px;
+  padding: 0;
+  border-radius: 18px;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
+}
+
+.adress-map__popup .mapboxgl-popup-close-button {
+  top: 10px;
+  right: 12px;
+  color: #64748b;
+  font-size: 18px;
+}
+
+.adress-map__popup .mapboxgl-popup-tip {
+  border-top-color: #ffffff;
+}
+
+.adress-map__popup-inner {
+  padding: 1rem 1.1rem 1.05rem;
+  background: linear-gradient(180deg, #ffffff 0%, #f6faf4 100%);
+}
+
+.adress-map__eyebrow {
+  margin: 0;
+  color: var(--brand-green);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.adress-map__title {
+  margin: 0.35rem 0 0;
+  color: #0f172a;
+  font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia,
+    serif;
+  font-size: 1.45rem;
+  line-height: 1.1;
+}
+
+.adress-map__text {
+  margin: 0.65rem 0 0;
+  color: #475569;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.hero-swiper {
+  position: relative;
+}
+
+.hero-swiper .swiper-button-prev,
+.hero-swiper .swiper-button-next {
+  width: 72px;
+  height: 72px;
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  backdrop-filter: blur(4px);
+}
+
+.hero-swiper .swiper-button-prev {
+  left: 1.5rem;
+}
+
+.hero-swiper .swiper-button-next {
+  right: 1.5rem;
+}
+
+.hero-swiper .swiper-button-prev::after,
+.hero-swiper .swiper-button-next::after {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.hero-swiper .swiper-pagination {
+  bottom: 1.4rem !important;
+}
+
+.hero-swiper .swiper-pagination-bullet {
+  width: 11px;
+  height: 11px;
+  background: rgba(255, 255, 255, 0.45);
+  opacity: 1;
+}
+
+.hero-swiper .swiper-pagination-bullet-active {
+  background: var(--brand-gold);
+}
+
+.services-swiper {
+  padding: 0 0 4rem;
+}
+
+.services-swiper .swiper-wrapper {
+  align-items: center;
+}
+
+.services-swiper .swiper-slide {
+  opacity: 0.42;
+  transform: scale(0.88);
+  transition:
+    opacity 300ms ease,
+    transform 300ms ease;
+}
+
+.services-swiper .swiper-slide-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.services-swiper .swiper-button-prev,
+.services-swiper .swiper-button-next {
+  top: auto;
+  bottom: 0;
+  width: 52px;
+  height: 52px;
+  border: 1px solid rgba(15, 23, 42, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #0f172a;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+}
+
+.services-swiper .swiper-button-prev {
+  left: calc(50% - 72px);
+}
+
+.services-swiper .swiper-button-next {
+  right: calc(50% - 72px);
+}
+
+.services-swiper .swiper-button-prev::after,
+.services-swiper .swiper-button-next::after {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.services-swiper .swiper-pagination {
+  bottom: 14px !important;
+}
+
+.services-swiper .swiper-pagination-bullet {
+  width: 9px;
+  height: 9px;
+  background: rgba(15, 23, 42, 0.24);
+  opacity: 1;
+}
+
+.services-swiper .swiper-pagination-bullet-active {
+  background: var(--brand-blue);
+}
+
+@media (max-width: 1023px) {
+  .hero-swiper .swiper-button-prev,
+  .hero-swiper .swiper-button-next {
+    width: 54px;
+    height: 54px;
+    top: auto;
+    bottom: 1rem;
+  }
+
+  .hero-swiper .swiper-button-prev {
+    left: 1rem;
+  }
+
+  .hero-swiper .swiper-button-next {
+    right: 1rem;
+  }
+
+  .hero-swiper .swiper-button-prev::after,
+  .hero-swiper .swiper-button-next::after {
+    font-size: 16px;
+  }
+
+  .hero-swiper .swiper-pagination {
+    bottom: 1.15rem !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-swiper .swiper-pagination {
+    bottom: 1rem !important;
+  }
+
+  .services-swiper .swiper-slide {
+    opacity: 1;
+    transform: none;
+  }
+
+  .services-swiper .swiper-button-prev {
+    left: calc(50% - 62px);
+  }
+
+  .services-swiper .swiper-button-next {
+    right: calc(50% - 62px);
+  }
 }
