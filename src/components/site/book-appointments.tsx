@@ -44,6 +44,9 @@ export function BookAppointments() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">(
     "idle",
   );
+  const [errorMessage, setErrorMessage] = useState(
+    "Une erreur est survenue pendant l'envoi. Veuillez reessayer.",
+  );
 
   useEffect(() => {
     let isMounted = true;
@@ -62,6 +65,7 @@ export function BookAppointments() {
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setStatus("submitting");
+    setErrorMessage("Une erreur est survenue pendant l'envoi. Veuillez reessayer.");
     const form = event.currentTarget;
 
     const formData = new FormData(form);
@@ -81,13 +85,16 @@ export function BookAppointments() {
       message: String(formData.get("description") || ""),
     });
 
-    if (response) {
+    if (response.data) {
       form.reset();
       setStatus("success");
       router.push("/appointments/verification-sent");
       return;
     }
 
+    if (response.detail) {
+      setErrorMessage(response.detail);
+    }
     setStatus("error");
   }
 
@@ -268,8 +275,7 @@ export function BookAppointments() {
                 ) : null}
                 {status === "error" ? (
                   <p className="mt-4 text-sm text-red-700">
-                    Une erreur est survenue pendant l&apos;envoi. Veuillez
-                    reessayer.
+                    {errorMessage}
                   </p>
                 ) : null}
               </div>

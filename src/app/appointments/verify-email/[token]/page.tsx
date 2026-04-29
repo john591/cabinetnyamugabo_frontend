@@ -19,7 +19,7 @@ function getDjangoApiBaseUrl() {
     return "http://127.0.0.1:8000/api";
   }
 
-  return "";
+  return "https://cabinetnyamugabo.onrender.com/api";
 }
 
 export default async function AppointmentVerifyPage({

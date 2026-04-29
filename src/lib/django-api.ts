@@ -74,7 +74,7 @@ function getApiBaseUrl() {
     return "http://127.0.0.1:8000/api";
   }
 
-  return "";
+  return "https://cabinetnyamugabo.onrender.com/api";
 }
 
 function isPaginated<T>(data: unknown): data is PaginatedResponse<T> {
@@ -102,6 +102,39 @@ async function fetchFromFrontendApi<T>(
     return (await response.json()) as T;
   } catch {
     return null;
+  }
+}
+
+async function postToFrontendApi<T>(
+  path: string,
+  body: unknown,
+): Promise<{ data: T | null; detail: string | null }> {
+  try {
+    const response = await fetch(path, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      cache: "no-store",
+      body: JSON.stringify(body),
+    });
+    const data = (await response.json().catch(() => null)) as
+      | (T & { detail?: string })
+      | null;
+
+    if (!response.ok) {
+      return {
+        data: null,
+        detail: data?.detail ?? "Une erreur est survenue pendant l'envoi.",
+      };
+    }
+
+    return { data, detail: null };
+  } catch {
+    return {
+      data: null,
+      detail: "Impossible de contacter le serveur de rendez-vous.",
+    };
   }
 }
 
@@ -376,9 +409,7 @@ export async function submitAppointmentRequest(payload: {
   message: string;
 }) {
   if (isBrowser()) {
-    return fetchFromFrontendApi<{ detail: string }>("/api/appointments", {
-      method: "POST",
-      body: JSON.stringify({
+    return postToFrontendApi<{ detail: string }>("/api/appointments", {
         name: payload.name,
         address: payload.address,
         phone: payload.phone,
@@ -389,11 +420,10 @@ export async function submitAppointmentRequest(payload: {
         preferred_date: payload.preferredDate,
         preferred_time: payload.preferredTime || null,
         message: payload.message,
-      }),
     });
   }
 
-  return postToDjango<{ detail: string }>("/appointments/", {
+  const data = await postToDjango<{ detail: string }>("/appointments/", {
       name: payload.name,
       address: payload.address,
       phone: payload.phone,
@@ -405,4 +435,5 @@ export async function submitAppointmentRequest(payload: {
       preferred_time: payload.preferredTime || null,
       message: payload.message,
   });
+  return { data, detail: data ? null : "Une erreur est survenue pendant l'envoi." };
 }

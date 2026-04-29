@@ -13,7 +13,7 @@ function getApiBaseUrl() {
     return "http://127.0.0.1:8000/api";
   }
 
-  return "";
+  return "https://cabinetnyamugabo.onrender.com/api";
 }
 
 export async function POST(request: NextRequest) {
