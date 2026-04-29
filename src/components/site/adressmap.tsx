@@ -29,6 +29,10 @@ export default function AdressMap() {
         return process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
       }
 
+      if (process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN) {
+        return process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN;
+      }
+
       const response = await fetch("/api/mapbox-token", { cache: "no-store" });
       if (!response.ok) {
         return "";
