@@ -101,88 +101,88 @@ export function BookAppointments() {
   return (
     <section
       id="book-appointments"
-      className="bg-white px-4 py-12 sm:px-6 sm:py-14 lg:px-8"
+      className="bg-white px-3 py-8 sm:px-6 sm:py-12 lg:px-8"
     >
-      <div className="mx-auto max-w-5xl border border-[rgba(13,69,149,0.14)] bg-white px-5 py-6 shadow-[0_18px_48px_rgba(15,23,42,0.06)] sm:px-8 sm:py-8">
-        <div className="flex flex-col gap-6 border-b border-dashed border-[rgba(13,69,149,0.14)] pb-6 sm:flex-row sm:items-start sm:justify-between">
-          <div>
-            <p className="text-3xl font-semibold leading-tight text-[#24303a] sm:text-5xl">
+      <div className="mx-auto w-full max-w-5xl border border-[rgba(13,69,149,0.14)] bg-white px-4 py-5 shadow-[0_18px_48px_rgba(15,23,42,0.06)] sm:px-6 sm:py-7 md:px-8 md:py-8">
+        <div className="flex flex-col gap-4 border-b border-dashed border-[rgba(13,69,149,0.14)] pb-5 md:flex-row md:items-start md:justify-between md:gap-8 md:pb-6">
+          <div className="min-w-0">
+            <p className="text-2xl font-semibold leading-tight text-[#24303a] sm:text-4xl md:text-5xl">
               Formulaire de Prise de Rendez-vous
             </p>
-            <p className="mt-3 text-lg italic text-slate-600 sm:text-xl">
+            <p className="mt-2 text-base italic leading-7 text-slate-600 sm:mt-3 sm:text-lg md:text-xl">
               Planifiez votre consultation juridique
             </p>
           </div>
 
-          <div className="shrink-0 border border-[rgba(13,69,149,0.14)] bg-[#f5faf2] px-4 py-3">
-            <p className="text-xs font-semibold uppercase tracking-[0.26em] text-[#299122]">
+          <div className="w-full shrink-0 border border-[rgba(13,69,149,0.14)] bg-[#f5faf2] px-4 py-3 sm:w-fit md:max-w-[260px]">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#299122] sm:text-xs sm:tracking-[0.26em]">
               Cabinet Nyamugabo
             </p>
-            <p className="mt-1 font-serif text-2xl text-[#0d4595]">
+            <p className="mt-1 font-serif text-xl leading-tight text-[#0d4595] sm:text-2xl">
               Avocats d&apos;Affaires
             </p>
           </div>
         </div>
 
-        <form className="mt-6" onSubmit={handleSubmit}>
+        <form className="mt-6 sm:mt-7" onSubmit={handleSubmit}>
           <section>
-            <h2 className="text-2xl font-semibold text-[#24303a] sm:text-3xl">
+            <h2 className="text-xl font-semibold leading-tight text-[#24303a] sm:text-2xl md:text-3xl">
               Information Personnelle du Client
             </h2>
 
-            <div className="mt-5 grid gap-4 sm:grid-cols-2">
-              <label className="grid gap-2 text-base font-medium text-[#24303a] sm:col-span-2">
+            <div className="mt-4 grid gap-4 md:grid-cols-2 md:gap-5">
+              <label className="grid gap-2 text-sm font-medium leading-6 text-[#24303a] sm:text-base md:col-span-2">
                 Nom et Prenom:
                 <input
                   type="text"
                   name="name"
                   required
-                  className="h-12 border border-[rgba(13,69,149,0.18)] bg-white px-4 text-slate-950 outline-none"
+                  className="h-12 w-full min-w-0 border border-[rgba(13,69,149,0.18)] bg-white px-4 text-base text-slate-950 outline-none transition focus:border-[#0d4595] focus:ring-2 focus:ring-[#0d4595]/10"
                 />
               </label>
 
-              <label className="grid gap-2 text-base font-medium text-[#24303a] sm:col-span-2">
+              <label className="grid gap-2 text-sm font-medium leading-6 text-[#24303a] sm:text-base md:col-span-2">
                 Adresse complete:
                 <input
                   type="text"
                   name="address"
-                  className="h-12 border border-[rgba(13,69,149,0.18)] bg-white px-4 text-slate-950 outline-none"
+                  className="h-12 w-full min-w-0 border border-[rgba(13,69,149,0.18)] bg-white px-4 text-base text-slate-950 outline-none transition focus:border-[#0d4595] focus:ring-2 focus:ring-[#0d4595]/10"
                 />
               </label>
 
-              <label className="grid gap-2 text-base font-medium text-[#24303a]">
+              <label className="grid gap-2 text-sm font-medium leading-6 text-[#24303a] sm:text-base">
                 Numero de telephone:
                 <input
                   type="tel"
                   name="phone"
-                  className="h-12 border border-[rgba(13,69,149,0.18)] bg-white px-4 text-slate-950 outline-none"
+                  className="h-12 w-full min-w-0 border border-[rgba(13,69,149,0.18)] bg-white px-4 text-base text-slate-950 outline-none transition focus:border-[#0d4595] focus:ring-2 focus:ring-[#0d4595]/10"
                 />
               </label>
 
-              <label className="grid gap-2 text-base font-medium text-[#24303a]">
+              <label className="grid gap-2 text-sm font-medium leading-6 text-[#24303a] sm:text-base">
                 Adresse e-mail:
                 <input
                   type="email"
                   name="email"
                   required
-                  className="h-12 border border-[rgba(13,69,149,0.18)] bg-white px-4 text-slate-950 outline-none"
+                  className="h-12 w-full min-w-0 border border-[rgba(13,69,149,0.18)] bg-white px-4 text-base text-slate-950 outline-none transition focus:border-[#0d4595] focus:ring-2 focus:ring-[#0d4595]/10"
                 />
               </label>
             </div>
           </section>
 
-          <section className="mt-8">
-            <h2 className="text-2xl font-semibold text-[#24303a] sm:text-3xl">
+          <section className="mt-7 sm:mt-8">
+            <h2 className="text-xl font-semibold leading-tight text-[#24303a] sm:text-2xl md:text-3xl">
               Details du Rendez-vous
             </h2>
 
-            <div className="mt-5 grid gap-4 sm:grid-cols-2">
-              <label className="grid gap-2 text-base font-medium text-[#24303a] sm:col-span-2">
+            <div className="mt-4 grid gap-4 md:grid-cols-2 md:gap-5">
+              <label className="grid gap-2 text-sm font-medium leading-6 text-[#24303a] sm:text-base md:col-span-2">
                 Pays
                 <select
                   name="country"
                   required
-                  className="h-12 border border-[rgba(13,69,149,0.18)] bg-white px-4 text-slate-950 outline-none"
+                  className="h-12 w-full min-w-0 border border-[rgba(13,69,149,0.18)] bg-white px-4 text-base text-slate-950 outline-none transition focus:border-[#0d4595] focus:ring-2 focus:ring-[#0d4595]/10"
                   defaultValue="CD"
                 >
                   {countryOptions.map((country) => (
@@ -193,12 +193,12 @@ export function BookAppointments() {
                 </select>
               </label>
 
-              <label className="grid gap-2 text-base font-medium text-[#24303a] sm:col-span-2">
+              <label className="grid gap-2 text-sm font-medium leading-6 text-[#24303a] sm:text-base md:col-span-2">
                 Bureau
                 <select
                   name="office"
                   required
-                  className="h-12 border border-[rgba(13,69,149,0.18)] bg-white px-4 text-slate-950 outline-none"
+                  className="h-12 w-full min-w-0 border border-[rgba(13,69,149,0.18)] bg-white px-4 text-base text-slate-950 outline-none transition focus:border-[#0d4595] focus:ring-2 focus:ring-[#0d4595]/10"
                   defaultValue="kinshasa"
                 >
                   <option value="kinshasa">Kinshasa</option>
@@ -206,21 +206,21 @@ export function BookAppointments() {
                 </select>
               </label>
 
-              <label className="grid gap-2 text-base font-medium text-[#24303a]">
+              <label className="grid gap-2 text-sm font-medium leading-6 text-[#24303a] sm:text-base">
                 Date du Rendez-vous:
                 <input
                   type="date"
                   name="date"
                   required
-                  className="h-12 border border-[rgba(13,69,149,0.18)] bg-white px-4 text-slate-950 outline-none"
+                  className="h-12 w-full min-w-0 border border-[rgba(13,69,149,0.18)] bg-white px-4 text-base text-slate-950 outline-none transition focus:border-[#0d4595] focus:ring-2 focus:ring-[#0d4595]/10"
                 />
               </label>
 
-              <label className="grid gap-2 text-base font-medium text-[#24303a]">
+              <label className="grid gap-2 text-sm font-medium leading-6 text-[#24303a] sm:text-base">
                 Heure du Rendez-vous:
                 <select
                   name="time"
-                  className="h-12 border border-[rgba(13,69,149,0.18)] bg-white px-4 text-slate-950 outline-none"
+                  className="h-12 w-full min-w-0 border border-[rgba(13,69,149,0.18)] bg-white px-4 text-base text-slate-950 outline-none transition focus:border-[#0d4595] focus:ring-2 focus:ring-[#0d4595]/10"
                 >
                   <option value="">Choisissez une heure</option>
                   {appointmentTimeOptions.map((time) => (
@@ -231,11 +231,11 @@ export function BookAppointments() {
                 </select>
               </label>
 
-              <label className="grid gap-2 text-base font-medium text-[#24303a] sm:col-span-2">
+              <label className="grid gap-2 text-sm font-medium leading-6 text-[#24303a] sm:text-base md:col-span-2">
                 Type de service
                 <select
                   name="service"
-                  className="h-12 border border-[rgba(13,69,149,0.18)] bg-white px-4 text-slate-950 outline-none"
+                  className="h-12 w-full min-w-0 border border-[rgba(13,69,149,0.18)] bg-white px-4 text-base text-slate-950 outline-none transition focus:border-[#0d4595] focus:ring-2 focus:ring-[#0d4595]/10"
                 >
                   <option value="">Selectionnez un service</option>
                   {services.map((service) => (
@@ -251,18 +251,18 @@ export function BookAppointments() {
                 ) : null}
               </label>
 
-              <label className="grid gap-2 text-base font-medium text-[#24303a] sm:col-span-2">
+              <label className="grid gap-2 text-sm font-medium leading-6 text-[#24303a] sm:text-base md:col-span-2">
                 Breve description du probleme juridique:
                 <textarea
                   name="description"
-                  className="min-h-[180px] border border-[rgba(13,69,149,0.18)] bg-white px-4 py-3 text-slate-950 outline-none"
+                  className="min-h-[150px] w-full min-w-0 resize-y border border-[rgba(13,69,149,0.18)] bg-white px-4 py-3 text-base text-slate-950 outline-none transition focus:border-[#0d4595] focus:ring-2 focus:ring-[#0d4595]/10 sm:min-h-[180px]"
                 />
               </label>
 
-              <div className="sm:col-span-2">
+              <div className="md:col-span-2">
                 <button
                   disabled={status === "submitting"}
-                  className="inline-flex w-full items-center justify-center bg-[#0d4595] px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-[#0a3777] disabled:cursor-not-allowed disabled:opacity-70 sm:w-fit"
+                  className="inline-flex min-h-12 w-full items-center justify-center bg-[#0d4595] px-5 py-3 text-center text-xs font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-[#0a3777] disabled:cursor-not-allowed disabled:opacity-70 sm:w-fit sm:px-6 sm:text-sm sm:tracking-[0.18em]"
                 >
                   {status === "submitting"
                     ? "Envoi en cours..."
