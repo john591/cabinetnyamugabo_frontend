@@ -7,7 +7,7 @@ export type DjangoService = {
   slug: string;
   short_description: string;
   description: string;
-  icon: string;
+  imagelink: string;
   is_featured: boolean;
   order: number;
 };
@@ -229,7 +229,7 @@ export async function getServices() {
       slug: service.title.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
       short_description: service.description,
       description: service.description,
-      icon: "",
+      imagelink: service.image,
       is_featured: true,
       order: index,
     }));
@@ -363,9 +363,9 @@ export function mapServiceToSlide(
   return {
     id: service.id,
     title: service.title,
-    label: service.icon || "Practice Area",
+    label: "Practice Area",
     description: service.short_description || service.description,
-    image: images[index % images.length],
+    image: service.imagelink || images[index % images.length],
     slug: service.slug,
   };
 }

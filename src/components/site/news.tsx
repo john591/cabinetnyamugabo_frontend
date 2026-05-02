@@ -11,20 +11,17 @@ export async function News() {
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#299122]">
-              News
+              Actualités
             </p>
             <h2 className="mt-4 font-sans text-3xl leading-tight text-slate-950 sm:text-5xl sm:leading-none lg:text-6xl">
-              Featured Insights
+              Les dernières nouvelles et analyses de notre équipe d&apos;experts
             </h2>
           </div>
 
           <p className="max-w-xl text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
-            Commentary, firm updates, and legal developments selected to help
-            clients stay informed about the issues shaping business and private
-            matters.
+            Commentaires, actualités du cabinet et developpements juridiques selectionnés pour aider les clients à rester informés des enjeux qui façonnent les affaires commerciales et privées.
           </p>
         </div>
-
         <div className="mt-8 grid gap-8 sm:mt-10 sm:gap-10 lg:grid-cols-3 lg:gap-12">
           {posts.map((post) => (
             <Link
@@ -67,7 +64,7 @@ export async function News() {
             href="/news"
             className="inline-flex w-full items-center justify-center border border-slate-300 bg-white px-6 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#0d4595] transition hover:border-[#0d4595] hover:text-[#0d4595] sm:min-w-[240px] sm:w-auto sm:px-10 sm:py-5 sm:tracking-[0.22em]"
           >
-            Read More
+            Voir toutes les actualités
           </Link>
         </div>
       </div>

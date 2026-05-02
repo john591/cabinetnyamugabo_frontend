@@ -1,5 +1,3 @@
-import { BookAppointments } from "@/components/site/book-appointments";
-import { CaseResults } from "@/components/site/case-results";
 import { Contact } from "@/components/site/contact";
 import { CTA } from "@/components/site/cta";
 import { Footer } from "@/components/site/footer";

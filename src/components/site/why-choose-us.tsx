@@ -1,9 +1,9 @@
 import Link from "next/link";
 
 const storyPoints = [
-  "Trusted Corporate Advisory",
-  "Dispute Strategy & Advocacy",
-  "Private Client Guidance",
+  "Droit des affaires et droit commercial",
+  "Strategie et representation en contentieux",
+  "Nous conseillons aussi les particuliers",
 ];
 
 export function WhyChooseUs() {
@@ -44,16 +44,15 @@ export function WhyChooseUs() {
                 <div className="flex justify-end">
                   <div className="w-full max-w-[680px] border border-black/8 bg-white p-8 shadow-[0_24px_60px_rgba(15,23,42,0.16)] sm:p-10">
                     <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#0d4595]">
-                      Why Cabinet Nyamugabo
+                      Pourquoi le Cabinet Nyamugabo
                     </p>
                     <h2 className="mt-4 font-sans text-4xl leading-tight text-slate-950 sm:text-5xl">
-                      What makes our counsel different?
+                      Qu&apos;est-ce qui rend notre cabinet différent?
                     </h2>
                     <p className="mt-6 max-w-2xl text-lg leading-9 text-slate-700">
-                      We partner closely with clients through high-stakes
-                      commercial, dispute, and private client matters, combining
-                      strategic judgment, careful preparation, and clear
-                      communication at every stage.
+                      Nous collaborons etroitement avec nos clients dans le cadre de dossiers commerciaux,
+                      de litiges et de dossiers prives a forts enjeux, en combinant jugement stategique,
+                      prepation minutieuse et communication claire a chaque etape.
                     </p>
 
                     <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -61,13 +60,7 @@ export function WhyChooseUs() {
                         href="/about-us"
                         className="inline-flex items-center justify-center border border-[#0d4595]/20 bg-white px-6 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#0d4595] transition hover:border-[#0d4595] hover:bg-[#0d4595] hover:text-white"
                       >
-                        Learn More
-                      </Link>
-                      <Link
-                        href="/book-appointment"
-                        className="inline-flex h-14 w-14 items-center justify-center border border-slate-300 bg-white text-3xl text-slate-950 transition hover:border-slate-950"
-                      >
-                        ↓
+                        Lire plus
                       </Link>
                     </div>
                   </div>

@@ -2,48 +2,48 @@ import Link from "next/link";
 
 const principles = [
   {
-    title: "Client-Focused Advice",
-    text: "We align legal strategy with the commercial, personal, and institutional realities our clients face.",
+    title: "Conseil centré sur le client",
+    text: "Nous alignons la stratégie juridique sur les réalités commerciales, personnelles et institutionnelles auxquelles nos clients font face.",
   },
   {
-    title: "Consistent Excellence",
-    text: "Every matter receives disciplined preparation, rigorous analysis, and close attention to detail.",
+    title: "Excellence constante",
+    text: "Chaque dossier bénéficie d'une préparation disciplinée, d'une analyse rigoureuse et d'une attention particulière aux détails.",
   },
   {
-    title: "True Partnership",
-    text: "We work collaboratively with clients, building trust through responsiveness, clarity, and accountability.",
+    title: "Véritable partenariat",
+    text: "Nous travaillons en étroite collaboration avec nos clients et bâtissons la confiance par la réactivité, la clarté et la responsabilité.",
   },
   {
-    title: "Strong Teamwork",
-    text: "Our lawyers coordinate across practice areas so clients receive joined-up advice on complex matters.",
+    title: "Travail d'équipe solide",
+    text: "Nos avocats coordonnent leurs expertises afin d'offrir aux clients des conseils cohérents sur les dossiers complexes.",
   },
 ];
 
 const numbers = [
-  { value: "20+", label: "Years of combined legal and advisory experience" },
-  { value: "4", label: "Core practice areas serving business and private clients" },
-  { value: "100%", label: "Commitment to clear communication and practical strategy" },
-  { value: "24/7", label: "Responsiveness when matters become urgent or sensitive" },
+  { value: "20+", label: "Années d'expérience juridique et de conseil cumulée" },
+  { value: "4", label: "Domaines de pratique au service des entreprises et des particuliers" },
+  { value: "100%", label: "Engagement pour une communication claire et une stratégie pratique" },
+  { value: "24/7", label: "Réactivité lorsque les dossiers deviennent urgents ou sensibles" },
 ];
 
 const features = [
   {
-    title: "Our People",
-    text: "We invest in lawyers who combine technical ability with judgment, empathy, and professionalism.",
+    title: "Notre équipe",
+    text: "Nous misons sur des juristes qui allient compétence technique, jugement, empathie et professionnalisme.",
   },
   {
-    title: "Our Community",
-    text: "We believe legal work should strengthen institutions, support enterprise, and serve the wider public good.",
+    title: "Notre communauté",
+    text: "Nous croyons que le travail juridique doit renforcer les institutions, soutenir l'entreprise et servir l'intérêt général.",
   },
   {
-    title: "Our Standards",
-    text: "We hold ourselves to a high standard of care in how we prepare, advise, and represent every client.",
+    title: "Nos standards",
+    text: "Nous nous imposons un haut niveau d'exigence dans la préparation, le conseil et la représentation de chaque client.",
   },
 ];
 
 const founderHighlights = [
-  "Avocat pres la Cour",
-  "Professeur d'Universite",
+  "Avocat près la Cour",
+  "Professeur d'Université",
   "Homme politique",
   "Kinshasa & Bukavu",
 ];
@@ -55,24 +55,25 @@ export function AboutUs() {
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#299122]">
-              About Us
+              À propos de nous
             </p>
             <h1 className="mt-4 max-w-4xl font-serif text-5xl leading-tight text-slate-950 sm:text-6xl">
-              Cabinet Nyamugabo advises businesses, institutions, and private
-              clients with clarity, discipline, and strategic calm.
+              Le Cabinet Nyamugabo conseille les entreprises, les institutions
+              et les particuliers avec clarté, discipline et sérénité
+              stratégique.
             </h1>
           </div>
 
           <div className="space-y-5 text-base leading-8 text-slate-600">
             <p>
-              Our work is built on careful preparation, practical judgment, and
-              a commitment to helping clients navigate important decisions with
-              confidence.
+              Notre travail repose sur une préparation minutieuse, un jugement
+              pratique et l&apos;engagement d&apos;aider nos clients à prendre des
+              décisions importantes avec confiance.
             </p>
             <p>
-              We approach every instruction with the same standard: understand
-              the stakes, anticipate risk, and deliver advice that is both
-              legally sound and genuinely useful.
+              Nous abordons chaque mission avec la même exigence : comprendre
+              les enjeux, anticiper les risques et fournir des conseils à la
+              fois juridiquement solides et réellement utiles.
             </p>
           </div>
         </div>
@@ -82,11 +83,11 @@ export function AboutUs() {
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
             <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#299122]">
-              Our Approach
+              Notre approche
             </p>
             <h2 className="mt-4 font-serif text-4xl leading-tight text-slate-950 sm:text-5xl">
-              Our culture is guided by quality, trust, and long-term
-              partnership.
+              Notre culture est guidée par la qualité, la confiance et le
+              partenariat à long terme.
             </h2>
           </div>
 
@@ -129,28 +130,28 @@ export function AboutUs() {
               Le Promoteur
             </p>
             <h2 className="mt-6 font-serif text-5xl leading-tight text-[#0d4595] sm:text-6xl">
-              Maitre Claude Nyamugabo
+              Maître Claude Nyamugabo
             </h2>
             <p className="mt-2 text-2xl text-[#299122]">Bazibuhe</p>
 
             <div className="mt-8 space-y-6 text-lg leading-10 text-slate-600">
               <p>
-                Avocat pres la Cour, Professeur d&apos;Universite et Homme
-                politique, Maitre Claude Nyamugabo Bazibuhe est le fondateur et
+                Avocat près la Cour, Professeur d&apos;Université et Homme
+                politique, Maître Claude Nyamugabo Bazibuhe est le fondateur et
                 promoteur du Cabinet Nyamugabo.
               </p>
               <p>
-                Son parcours allie une expertise juridique de haut niveau a une
-                connaissance approfondie du paysage politique et economique de
-                la RDC. Cette double competence lui permet d&apos;offrir a ses
-                clients un accompagnement strategique exigeant et adapte aux
-                realites du terrain.
+                Son parcours allie une expertise juridique de haut niveau à une
+                connaissance approfondie du paysage politique et économique de
+                la RDC. Cette double compétence lui permet d&apos;offrir à ses
+                clients un accompagnement stratégique exigeant et adapté aux
+                réalités du terrain.
               </p>
               <p>
-                Sous sa direction, le Cabinet Nyamugabo s&apos;est affirme dans
-                des secteurs cles tels que les mines, la fiscalite,
-                l&apos;environnement et les questions de propriete, avec une
-                approche fondee sur la rigueur, la vision et la responsabilite.
+                Sous sa direction, le Cabinet Nyamugabo s&apos;est affirmé dans
+                des secteurs clés tels que les mines, la fiscalité,
+                l&apos;environnement et les questions de propriété, avec une
+                approche fondée sur la rigueur, la vision et la responsabilité.
               </p>
             </div>
 
@@ -172,10 +173,11 @@ export function AboutUs() {
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
             <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#299122]">
-              By The Numbers
+              En chiffres
             </p>
             <h2 className="mt-4 font-serif text-4xl leading-tight text-slate-950 sm:text-5xl">
-              A firm designed to be responsive, rigorous, and close to the work.
+              Un cabinet conçu pour être réactif, rigoureux et proche des
+              réalités de chaque dossier.
             </h2>
           </div>
 
@@ -198,17 +200,17 @@ export function AboutUs() {
         <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[1.05fr_0.95fr]">
           <article className="border border-[rgba(13,69,149,0.14)] bg-white p-8 shadow-[0_22px_50px_rgba(15,23,42,0.06)] sm:p-10">
             <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#299122]">
-              Culture That Connects
+              Une culture qui rassemble
             </p>
             <h2 className="mt-4 max-w-2xl font-serif text-4xl leading-tight text-slate-950 sm:text-5xl">
-              We believe strong legal work grows from strong professional
-              culture.
+              Nous croyons qu&apos;un travail juridique solide naît d&apos;une culture
+              professionnelle solide.
             </h2>
             <p className="mt-6 max-w-2xl text-base leading-8 text-slate-600">
-              Our team values integrity, preparation, mentorship, and respect
-              for the people behind each mandate. We aim to create a practice
-              environment where legal excellence and human judgment strengthen
-              one another.
+              Notre équipe valorise l&apos;intégrité, la préparation, le mentorat et
+              le respect des personnes derrière chaque mandat. Nous voulons
+              créer un environnement où l&apos;excellence juridique et le jugement
+              humain se renforcent mutuellement.
             </p>
 
             <div className="mt-10 grid gap-5">
@@ -228,40 +230,41 @@ export function AboutUs() {
           <div className="grid gap-6">
             <article className="overflow-hidden border border-[rgba(13,69,149,0.18)] bg-[linear-gradient(135deg,#0d4595_0%,#0b3772_62%,#299122_100%)] p-8 text-white sm:p-10">
               <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#b9eba2]">
-                Professional Development
+                Développement professionnel
               </p>
               <h3 className="mt-4 font-serif text-4xl leading-tight">
-                Investing in lawyers who can guide clients through complexity.
+                Investir dans des avocats capables d&apos;accompagner les clients
+                dans la complexité.
               </h3>
               <p className="mt-5 text-sm leading-7 text-white/78">
-                We value continuous development, thoughtful leadership, and the
-                growth of legal professionals who combine technical skill with
-                mature judgment.
+                Nous valorisons le développement continu, le leadership
+                réfléchi et la progression de professionnels du droit qui
+                associent compétence technique et jugement mûr.
               </p>
             </article>
 
             <article className="border border-[rgba(13,69,149,0.14)] bg-[#f6faf4] p-8 sm:p-10">
               <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#299122]">
-                Explore More
+                Explorer davantage
               </p>
               <div className="mt-6 grid gap-4">
                 <Link
                   href="/services"
                   className="border border-[rgba(13,69,149,0.14)] bg-white px-5 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#0d4595] transition hover:bg-[#0d4595] hover:text-white"
                 >
-                  Our Services
+                  Nos services
                 </Link>
                 <Link
                   href="/news"
                   className="border border-[rgba(13,69,149,0.14)] bg-white px-5 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#0d4595] transition hover:bg-[#0d4595] hover:text-white"
                 >
-                  Featured Insights
+                  Articles à la une
                 </Link>
                 <Link
                   href="/book-appointment"
                   className="border border-[rgba(13,69,149,0.14)] bg-white px-5 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#0d4595] transition hover:bg-[#0d4595] hover:text-white"
                 >
-                  Book Appointment
+                  Prendre rendez-vous
                 </Link>
               </div>
             </article>

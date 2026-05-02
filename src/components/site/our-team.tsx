@@ -11,11 +11,11 @@ export async function OurTeam() {
       <div className="mx-auto max-w-7xl">
         <div className="max-w-3xl">
           <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">
-            Our Team
+            Notre equipe
           </p>
           <h2 className="mt-4 font-serif text-4xl leading-tight text-slate-950 sm:text-5xl">
-            Lawyers who combine legal rigor, strong advocacy, and practical
-            client partnership.
+            Des avocats qui allient rigueur juridique, plaidoirie efficace et partenariat concret avec leurs clients.
+            Nous avons aussi une equipe de support tres professionnelle qui assure une gestion administrative et logistique impeccable pour nos clients.
           </h2>
         </div>
 

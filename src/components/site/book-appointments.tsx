@@ -11,7 +11,6 @@ import {
 
 const countryOptions = [
   { value: "CD", label: "Republique Democratique du Congo" },
-  { value: "RW", label: "Rwanda" },
   { value: "BI", label: "Burundi" },
   { value: "UG", label: "Ouganda" },
   { value: "KE", label: "Kenya" },
@@ -26,15 +25,38 @@ const countryOptions = [
   { value: "ZZ", label: "Autre / non repertorie" },
 ];
 
+const phoneCountryOptions = [
+  { value: "+243", label: "🇨🇩 +243 RDC" },
+  { value: "+257", label: "🇧🇮 +257 Burundi" },
+  { value: "+256", label: "🇺🇬 +256 Ouganda" },
+  { value: "+254", label: "🇰🇪 +254 Kenya" },
+  { value: "+255", label: "🇹🇿 +255 Tanzanie" },
+  { value: "+242", label: "🇨🇬 +242 Congo" },
+  { value: "+27", label: "🇿🇦 +27 Afrique du Sud" },
+  { value: "+33", label: "🇫🇷 +33 France" },
+  { value: "+32", label: "🇧🇪 +32 Belgique" },
+  { value: "+44", label: "🇬🇧 +44 Royaume-Uni" },
+  { value: "+1", label: "🇺🇸 +1 Etats-Unis" },
+  { value: "+86", label: "🇨🇳 +86 Chine" },
+];
+
 const appointmentTimeOptions = [
   "08:00",
+  "08:30",
   "09:00",
+  "09:30",
   "10:00",
+  "10:30",
   "11:00",
+  "11:30",
   "12:00",
+  "12:30",
   "14:00",
+  "14:30",
   "15:00",
+  "15:30",
   "16:00",
+  "16:30",
   "17:00",
 ];
 
@@ -69,11 +91,13 @@ export function BookAppointments() {
     const form = event.currentTarget;
 
     const formData = new FormData(form);
+    const phoneCountryCode = String(formData.get("phoneCountryCode") || "");
+    const phoneNumber = String(formData.get("phone") || "");
 
     const response = await submitAppointmentRequest({
       name: String(formData.get("name") || ""),
       address: String(formData.get("address") || ""),
-      phone: String(formData.get("phone") || ""),
+      phone: `${phoneCountryCode} ${phoneNumber}`.trim(),
       email: String(formData.get("email") || ""),
       country: String(formData.get("country") || ""),
       office: String(formData.get("office") || ""),
@@ -132,7 +156,9 @@ export function BookAppointments() {
 
             <div className="mt-4 grid gap-4 md:grid-cols-2 md:gap-5">
               <label className="grid gap-2 text-sm font-medium leading-6 text-[#24303a] sm:text-base md:col-span-2">
-                Nom et Prenom:
+                <span>
+                  Nom et Prenom: <span className="text-red-600">*</span>
+                </span>
                 <input
                   type="text"
                   name="name"
@@ -142,25 +168,47 @@ export function BookAppointments() {
               </label>
 
               <label className="grid gap-2 text-sm font-medium leading-6 text-[#24303a] sm:text-base md:col-span-2">
-                Adresse complete:
+                <span>
+                  Adresse complete: <span className="text-red-600">*</span>
+                </span>
                 <input
                   type="text"
                   name="address"
+                  required
                   className="h-12 w-full min-w-0 border border-[rgba(13,69,149,0.18)] bg-white px-4 text-base text-slate-950 outline-none transition focus:border-[#0d4595] focus:ring-2 focus:ring-[#0d4595]/10"
                 />
               </label>
 
               <label className="grid gap-2 text-sm font-medium leading-6 text-[#24303a] sm:text-base">
-                Numero de telephone:
-                <input
-                  type="tel"
-                  name="phone"
-                  className="h-12 w-full min-w-0 border border-[rgba(13,69,149,0.18)] bg-white px-4 text-base text-slate-950 outline-none transition focus:border-[#0d4595] focus:ring-2 focus:ring-[#0d4595]/10"
-                />
+                <span>
+                  Numero de telephone: <span className="text-red-600">*</span>
+                </span>
+                <div className="grid gap-2 sm:grid-cols-[minmax(0,190px)_1fr]">
+                  <select
+                    name="phoneCountryCode"
+                    required
+                    defaultValue="+243"
+                    className="h-12 w-full min-w-0 border border-[rgba(13,69,149,0.18)] bg-white px-3 text-base text-slate-950 outline-none transition focus:border-[#0d4595] focus:ring-2 focus:ring-[#0d4595]/10"
+                  >
+                    {phoneCountryOptions.map((country) => (
+                      <option key={country.value} value={country.value}>
+                        {country.label}
+                      </option>
+                    ))}
+                  </select>
+                  <input
+                    type="tel"
+                    name="phone"
+                    required
+                    className="h-12 w-full min-w-0 border border-[rgba(13,69,149,0.18)] bg-white px-4 text-base text-slate-950 outline-none transition focus:border-[#0d4595] focus:ring-2 focus:ring-[#0d4595]/10"
+                  />
+                </div>
               </label>
 
               <label className="grid gap-2 text-sm font-medium leading-6 text-[#24303a] sm:text-base">
-                Adresse e-mail:
+                <span>
+                  Adresse e-mail: <span className="text-red-600">*</span>
+                </span>
                 <input
                   type="email"
                   name="email"
@@ -178,7 +226,9 @@ export function BookAppointments() {
 
             <div className="mt-4 grid gap-4 md:grid-cols-2 md:gap-5">
               <label className="grid gap-2 text-sm font-medium leading-6 text-[#24303a] sm:text-base md:col-span-2">
-                Pays
+                <span>
+                  Pays <span className="text-red-600">*</span>
+                </span>
                 <select
                   name="country"
                   required
@@ -194,7 +244,9 @@ export function BookAppointments() {
               </label>
 
               <label className="grid gap-2 text-sm font-medium leading-6 text-[#24303a] sm:text-base md:col-span-2">
-                Bureau
+                <span>
+                  Bureau <span className="text-red-600">*</span>
+                </span>
                 <select
                   name="office"
                   required
@@ -207,7 +259,9 @@ export function BookAppointments() {
               </label>
 
               <label className="grid gap-2 text-sm font-medium leading-6 text-[#24303a] sm:text-base">
-                Date du Rendez-vous:
+                <span>
+                  Date du Rendez-vous: <span className="text-red-600">*</span>
+                </span>
                 <input
                   type="date"
                   name="date"
@@ -217,9 +271,12 @@ export function BookAppointments() {
               </label>
 
               <label className="grid gap-2 text-sm font-medium leading-6 text-[#24303a] sm:text-base">
-                Heure du Rendez-vous:
+                <span>
+                  Heure du Rendez-vous: <span className="text-red-600">*</span>
+                </span>
                 <select
                   name="time"
+                  required
                   className="h-12 w-full min-w-0 border border-[rgba(13,69,149,0.18)] bg-white px-4 text-base text-slate-950 outline-none transition focus:border-[#0d4595] focus:ring-2 focus:ring-[#0d4595]/10"
                 >
                   <option value="">Choisissez une heure</option>
@@ -232,9 +289,12 @@ export function BookAppointments() {
               </label>
 
               <label className="grid gap-2 text-sm font-medium leading-6 text-[#24303a] sm:text-base md:col-span-2">
-                Type de service
+                <span>
+                  Type de service <span className="text-red-600">*</span>
+                </span>
                 <select
                   name="service"
+                  required
                   className="h-12 w-full min-w-0 border border-[rgba(13,69,149,0.18)] bg-white px-4 text-base text-slate-950 outline-none transition focus:border-[#0d4595] focus:ring-2 focus:ring-[#0d4595]/10"
                 >
                   <option value="">Selectionnez un service</option>
@@ -252,9 +312,13 @@ export function BookAppointments() {
               </label>
 
               <label className="grid gap-2 text-sm font-medium leading-6 text-[#24303a] sm:text-base md:col-span-2">
-                Breve description du probleme juridique:
+                <span>
+                  Breve description du probleme juridique:{" "}
+                  <span className="text-red-600">*</span>
+                </span>
                 <textarea
                   name="description"
+                  required
                   className="min-h-[150px] w-full min-w-0 resize-y border border-[rgba(13,69,149,0.18)] bg-white px-4 py-3 text-base text-slate-950 outline-none transition focus:border-[#0d4595] focus:ring-2 focus:ring-[#0d4595]/10 sm:min-h-[180px]"
                 />
               </label>

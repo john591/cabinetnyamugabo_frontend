@@ -1,7 +1,7 @@
 const footerLinks = {
-  firm: ["About", "Practice Areas", "Case Studies"],
-  resources: ["Insights", "FAQs", "Client Intake"],
-  contact: ["Kinshasa", "+243 000 000 000", "contact@cabinetnyamugabo.com"],
+  "Le Cabinet": ["À propos", "Domaines de pratique", "Études de cas"],
+  resources: ["Perspectives", "FAQ", "Prise en charge des clients"],
+  contact: ["Kinshasa", "+243 000 000 000", "contact@cabinetnyamugabo.org"],
 };
 
 export function Footer() {
@@ -16,18 +16,17 @@ export function Footer() {
             Cabinet Nyamugabo
           </p>
           <h2 className="max-w-xl font-serif text-4xl leading-tight text-white">
-            Sophisticated counsel for moments that demand judgment.
+            Nous sommes là pour vous apporter des solutions juridiques claires, rapides et efficaces, afin que vous puissiez avancer avec confiance dans vos projets et protéger ce qui compte le plus pour vous.
           </h2>
           <p className="max-w-xl text-sm leading-7 text-[#d4e2ef]">
-            Whether you&apos;re preparing a transaction, responding to a dispute,
-            or protecting your family&apos;s interests, our team is ready to help
-            you move with confidence.
+            Que bous prepariez une transaction, repondiez a un litige ou protegiez les interets de votre entreprise, notre equipe est a votre ecoute pour vous offrir des conseils juridiques adaptes a vos besoins et a votre situation.
+
           </p>
           <a
-            href="mailto:contact@cabinetnyamugabo.com"
-            className="inline-flex rounded-full border border-white/22 px-6 py-3 text-xs font-semibold tracking-[0.22em] text-[#d9f4ca] uppercase transition hover:bg-white/8"
+            href="mailto:contact@cabinetnyamugabo.org"
+            className="inline-flex rounded-full border border-white/22 px-6 py-3 text-xs font-semibold tracking-[0.22em] text-[#d9f4ca] transition hover:bg-white/8"
           >
-            contact@cabinetnyamugabo.com
+            contact@cabinetnyamugabo.org
           </a>
         </div>
 
@@ -48,8 +47,8 @@ export function Footer() {
       </div>
 
       <div className="mx-auto mt-12 flex w-full max-w-7xl flex-col gap-3 border-t border-white/12 pt-6 text-xs tracking-[0.18em] text-[#9fc0e4] uppercase sm:flex-row sm:items-center sm:justify-between">
-        <p>© 2026 Cabinet Nyamugabo. All rights reserved.</p>
-        <p>Built for trust, clarity, and strong advocacy.</p>
+        <p>© 2026 Cabinet Nyamugabo. Tous droits réservés.</p>
+        <p>Conçu pour la confiance, la clarté et un plaidoyer solide.</p>
       </div>
     </footer>
   );

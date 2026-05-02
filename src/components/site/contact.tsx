@@ -3,7 +3,7 @@ import AdressMap from "@/components/site/adressmap";
 const office = {
   address: "Gombe, Kinshasa, Democratic Republic of the Congo",
   phone: "+243 000 000 000",
-  email: "contact@cabinetnyamugabo.com",
+  email: "contact@cabinetnyamugabo.org",
   mapQuery: "Gombe, Kinshasa, Democratic Republic of the Congo",
 };
 

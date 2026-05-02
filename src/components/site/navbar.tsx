@@ -66,7 +66,7 @@ function getHref(label: string) {
     case "Services":
       return "/services";
     case "Notre Equipe":
-      return "/team";
+      return "/our-team";
     case "Environnement & nous":
       return "/environment";
     case "Blog":

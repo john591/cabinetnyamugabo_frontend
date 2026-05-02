@@ -16,15 +16,13 @@ export default async function NewsPage() {
         <div className="mx-auto max-w-7xl">
           <div className="max-w-3xl">
             <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#299122]">
-              News
+              Actualités
             </p>
             <h1 className="mt-4 font-sans text-5xl leading-none sm:text-6xl">
-              All Insights
+              Toutes les informations
             </h1>
             <p className="mt-6 text-base leading-8 text-slate-600">
-              Articles, legal updates, and commentary from Cabinet Nyamugabo on
-              the issues shaping business, disputes, and private client
-              matters.
+              Articles, analyses et perspectives sur les tendances juridiques, les évolutions réglementaires et les meilleures pratiques pour les entreprises en République démocratique du Congo.
             </p>
           </div>
 
