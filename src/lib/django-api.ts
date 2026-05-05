@@ -261,7 +261,7 @@ export async function getTeamMembers() {
         email: "aline.nyamugabo@cabinetnyamugabo.com",
         phone: "+243 000 000 101",
         linkedin_url: "",
-        photo_url:
+        photo:
           "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=80",
         is_active: true,
         order: 1,
@@ -277,7 +277,7 @@ export async function getTeamMembers() {
         email: "david.ilunga@cabinetnyamugabo.com",
         phone: "+243 000 000 102",
         linkedin_url: "",
-        photo_url:
+        photo:
           "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=80",
         is_active: true,
         order: 2,
@@ -293,7 +293,7 @@ export async function getTeamMembers() {
         email: "clarisse.mbayo@cabinetnyamugabo.com",
         phone: "+243 000 000 103",
         linkedin_url: "",
-        photo_url:
+        photo:
           "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=80",
         is_active: true,
         order: 3,
@@ -320,7 +320,7 @@ export async function getPosts() {
         ? { id: index + 1, name: post.type, slug: post.type.toLowerCase() }
         : null,
       author: null,
-      featured_image_url: post.image,
+      featured_image: post.image,
       published_at: post.date,
     }));
   }
@@ -350,7 +350,7 @@ export async function getPostBySlug(slug: string) {
       ? { id: 0, name: fallback.type, slug: fallback.type.toLowerCase() }
       : null,
     author: null,
-    featured_image_url: fallback.image,
+    featured_image: fallback.image,
     published_at: fallback.date,
   };
 }
@@ -378,8 +378,7 @@ export function mapTeamMemberToCard(member: DjangoTeamMember) {
     email: member.email,
     phone: member.phone,
     image:
-      member.photo_url ||
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=80",
+      member.photo || "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=80",
   };
 }
 
@@ -391,7 +390,7 @@ export function mapPostToCard(post: DjangoBlogPost) {
     title: post.title,
     summary: post.summary,
     image:
-      post.featured_image_url ||
+      post.featured_image ||
       "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=80",
   };
 }
