@@ -7,7 +7,7 @@ export type DjangoService = {
   slug: string;
   short_description: string;
   description: string;
-  imagelink: string;
+  image: string;
   is_featured: boolean;
   order: number;
 };
@@ -23,7 +23,7 @@ export type DjangoTeamMember = {
   email: string;
   phone: string;
   linkedin_url: string;
-  photo_url: string;
+  photo: string;
   is_active: boolean;
   order: number;
 };
@@ -46,7 +46,7 @@ export type DjangoBlogPost = {
     slug: string;
     role: string;
   } | null;
-  featured_image_url: string;
+  featured_image: string;
   published_at: string;
 };
 
