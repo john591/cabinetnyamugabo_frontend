@@ -7,7 +7,8 @@ export type DjangoService = {
   slug: string;
   short_description: string;
   description: string;
-  image: string;
+  image?: string;
+  imagelink?: string;
   is_featured: boolean;
   order: number;
 };
@@ -365,7 +366,7 @@ export function mapServiceToSlide(
     title: service.title,
     label: "Practice Area",
     description: service.short_description || service.description,
-    image: service.imagelink || images[index % images.length],
+    image: service.image || service.imagelink || images[index % images.length],
     slug: service.slug,
   };
 }

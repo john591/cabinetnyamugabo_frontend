@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 
 import { Footer } from "@/components/site/footer";
 import { Navbar } from "@/components/site/navbar";
-import { getBlogPostImage, getPostBySlug, getPosts } from "@/lib/django-api";
+import { getPostBySlug, getPosts } from "@/lib/django-api";
 
 type NewsDetailPageProps = {
   params: Promise<{
@@ -35,7 +35,6 @@ export default async function NewsDetailPage({
     .split(/\n{2,}/)
     .map((paragraph) => paragraph.trim())
     .filter(Boolean);
-  const postImage = getBlogPostImage(post);
 
   return (
     <div className="min-h-screen bg-white text-slate-950">
@@ -68,11 +67,10 @@ export default async function NewsDetailPage({
             </p>
 
             <div className="mt-10 aspect-[16/8] overflow-hidden bg-slate-100">
-              <div
-                className="h-full w-full bg-cover bg-center"
-                style={{
-                  backgroundImage: `url(${postImage})`,
-                }}
+              <img
+                src={post.featured_image}
+                alt={post.title}
+                className="h-full w-full object-cover"
               />
             </div>
           </div>
