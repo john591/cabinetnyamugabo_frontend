@@ -1,5 +1,6 @@
 import { servicesData } from "@/lib/services-data";
 import { newsPosts } from "@/lib/news-data";
+import { getDjangoApiBaseUrl } from "@/lib/api-config";
 
 export type DjangoService = {
   id: number;
@@ -25,6 +26,7 @@ export type DjangoTeamMember = {
   phone: string;
   linkedin_url: string;
   photo: string;
+  photo_url?: string;
   is_active: boolean;
   order: number;
 };
@@ -60,22 +62,6 @@ type PaginatedResponse<T> = {
 
 function isBrowser() {
   return typeof window !== "undefined";
-}
-
-function getApiBaseUrl() {
-  const configuredBaseUrl =
-    process.env.NEXT_PUBLIC_DJANGO_API_BASE_URL ??
-    process.env.DJANGO_API_BASE_URL;
-
-  if (configuredBaseUrl) {
-    return configuredBaseUrl.replace(/\/$/, "");
-  }
-
-  if (process.env.NODE_ENV !== "production") {
-    return "http://127.0.0.1:8000/api";
-  }
-
-  return "https://cabinetnyamugabo.onrender.com/api";
 }
 
 function isPaginated<T>(data: unknown): data is PaginatedResponse<T> {
@@ -143,13 +129,13 @@ async function fetchFromDjango<T>(
   path: string,
   init?: RequestInit,
 ): Promise<T | null> {
-  try {
-    if (!getApiBaseUrl()) {
-      return null;
-    }
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 6000);
 
-    const response = await fetch(`${getApiBaseUrl()}${path}`, {
+  try {
+    const response = await fetch(`${getDjangoApiBaseUrl()}${path}`, {
       ...init,
+      signal: init?.signal ?? controller.signal,
       headers: {
         "Content-Type": "application/json",
         ...(init?.headers ?? {}),
@@ -164,16 +150,14 @@ async function fetchFromDjango<T>(
     return (await response.json()) as T;
   } catch {
     return null;
+  } finally {
+    clearTimeout(timeout);
   }
 }
 
 async function postToDjango<T>(path: string, body: unknown): Promise<T | null> {
   try {
-    if (!getApiBaseUrl()) {
-      return null;
-    }
-
-    const response = await fetch(`${getApiBaseUrl()}${path}`, {
+    const response = await fetch(`${getDjangoApiBaseUrl()}${path}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -249,60 +233,68 @@ export async function getTeamMembers() {
     PaginatedResponse<DjangoTeamMember> | DjangoTeamMember[]
   >("/team/");
 
+  const fallbackTeam = [
+    {
+      id: 1,
+      first_name: "Aline",
+      last_name: "Nyamugabo",
+      full_name: "Aline Nyamugabo",
+      slug: "aline-nyamugabo",
+      role: "Managing Partner",
+      bio: "",
+      email: "aline.nyamugabo@cabinetnyamugabo.com",
+      phone: "+243 000 000 101",
+      linkedin_url: "",
+      photo:
+        "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=80",
+      is_active: true,
+      order: 1,
+    },
+    {
+      id: 2,
+      first_name: "David",
+      last_name: "Ilunga",
+      full_name: "David Ilunga",
+      slug: "david-ilunga",
+      role: "Head of Disputes",
+      bio: "",
+      email: "david.ilunga@cabinetnyamugabo.com",
+      phone: "+243 000 000 102",
+      linkedin_url: "",
+      photo:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=80",
+      is_active: true,
+      order: 2,
+    },
+    {
+      id: 3,
+      first_name: "Clarisse",
+      last_name: "Mbayo",
+      full_name: "Clarisse Mbayo",
+      slug: "clarisse-mbayo",
+      role: "Counsel, Private Clients",
+      bio: "",
+      email: "clarisse.mbayo@cabinetnyamugabo.com",
+      phone: "+243 000 000 103",
+      linkedin_url: "",
+      photo:
+        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=80",
+      is_active: true,
+      order: 3,
+    },
+  ];
+
   if (!data) {
-    return [
-      {
-        id: 1,
-        first_name: "Aline",
-        last_name: "Nyamugabo",
-        full_name: "Aline Nyamugabo",
-        slug: "aline-nyamugabo",
-        role: "Managing Partner",
-        bio: "",
-        email: "aline.nyamugabo@cabinetnyamugabo.com",
-        phone: "+243 000 000 101",
-        linkedin_url: "",
-        photo:
-          "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=80",
-        is_active: true,
-        order: 1,
-      },
-      {
-        id: 2,
-        first_name: "David",
-        last_name: "Ilunga",
-        full_name: "David Ilunga",
-        slug: "david-ilunga",
-        role: "Head of Disputes",
-        bio: "",
-        email: "david.ilunga@cabinetnyamugabo.com",
-        phone: "+243 000 000 102",
-        linkedin_url: "",
-        photo:
-          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=80",
-        is_active: true,
-        order: 2,
-      },
-      {
-        id: 3,
-        first_name: "Clarisse",
-        last_name: "Mbayo",
-        full_name: "Clarisse Mbayo",
-        slug: "clarisse-mbayo",
-        role: "Counsel, Private Clients",
-        bio: "",
-        email: "clarisse.mbayo@cabinetnyamugabo.com",
-        phone: "+243 000 000 103",
-        linkedin_url: "",
-        photo:
-          "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=80",
-        is_active: true,
-        order: 3,
-      },
-    ];
+    return fallbackTeam;
   }
 
-  return isPaginated<DjangoTeamMember>(data) ? data.results : data;
+  const team = isPaginated<DjangoTeamMember>(data) ? data.results : data;
+
+  if (team.length === 0) {
+    return fallbackTeam;
+  }
+
+  return team;
 }
 
 export async function getPosts() {
@@ -372,14 +364,20 @@ export function mapServiceToSlide(
 }
 
 export function mapTeamMemberToCard(member: DjangoTeamMember) {
+  const fullName =
+    member.full_name || `${member.first_name ?? ""} ${member.last_name ?? ""}`.trim();
+
   return {
-    name: member.full_name,
-    role: member.role,
+    name: fullName || "Membre de l'equipe",
+    role: member.role || "Avocat",
+    bio: member.bio || "",
     city: "Kinshasa",
-    email: member.email,
-    phone: member.phone,
+    email: member.email || "",
+    phone: member.phone || "",
     image:
-      member.photo || "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=80",
+      member.photo_url ||
+      member.photo ||
+      "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=80",
   };
 }
 

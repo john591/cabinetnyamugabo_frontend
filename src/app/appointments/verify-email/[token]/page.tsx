@@ -1,26 +1,12 @@
 import { redirect } from "next/navigation";
 
+import { getDjangoApiBaseUrl } from "@/lib/api-config";
+
 type AppointmentVerifyPageProps = {
   params: Promise<{
     token: string;
   }>;
 };
-
-function getDjangoApiBaseUrl() {
-  const configuredBaseUrl =
-    process.env.NEXT_PUBLIC_DJANGO_API_BASE_URL ??
-    process.env.DJANGO_API_BASE_URL;
-
-  if (configuredBaseUrl) {
-    return configuredBaseUrl.replace(/\/$/, "");
-  }
-
-  if (process.env.NODE_ENV !== "production") {
-    return "http://127.0.0.1:8000/api";
-  }
-
-  return "https://cabinetnyamugabo.onrender.com/api";
-}
 
 export default async function AppointmentVerifyPage({
   params,

@@ -40,7 +40,7 @@ export default async function NewsDetailPage({
     <div className="min-h-screen bg-white text-slate-950">
       <Navbar />
       <main id="main-content">
-        <section className="px-4 py-16 sm:px-6 lg:px-8">
+        <section className="px-4 py-12 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
           <div className="mx-auto max-w-5xl">
             <Link
               href="/news"
@@ -58,11 +58,11 @@ export default async function NewsDetailPage({
               | {post.category?.name ?? "Article"}
             </p>
 
-            <h1 className="mt-4 max-w-4xl font-sans text-4xl leading-tight sm:text-5xl lg:text-6xl">
+            <h1 className="mt-4 max-w-4xl font-sans text-3xl leading-tight sm:text-4xl md:text-5xl lg:text-6xl">
               {post.title}
             </h1>
 
-            <p className="mt-6 max-w-3xl text-lg leading-9 text-slate-600">
+            <p className="mt-5 max-w-3xl text-sm leading-7 text-slate-600 sm:text-base lg:mt-6 lg:text-lg lg:leading-9">
               {post.summary}
             </p>
 
@@ -76,9 +76,9 @@ export default async function NewsDetailPage({
           </div>
         </section>
 
-        <section className="px-4 pb-20 sm:px-6 lg:px-8">
+        <section className="px-4 pb-14 sm:px-6 sm:pb-16 lg:px-8 lg:pb-20">
           <article className="mx-auto max-w-3xl">
-            <div className="space-y-8 text-lg leading-9 text-slate-700">
+            <div className="space-y-6 text-sm leading-7 text-slate-700 sm:text-base sm:leading-8 lg:space-y-8 lg:text-lg lg:leading-9">
               {paragraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}

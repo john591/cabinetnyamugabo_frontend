@@ -15,13 +15,13 @@ const results = [
 
 export function CaseResults() {
   return (
-    <section className="bg-[linear-gradient(180deg,#f6faf4_0%,#edf6ea_100%)] px-4 py-20 sm:px-6 lg:px-8">
+    <section className="bg-[linear-gradient(180deg,#f6faf4_0%,#edf6ea_100%)] px-4 py-14 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
       <div className="mx-auto max-w-7xl">
         <div className="max-w-3xl">
           <p className="text-[11px] font-semibold tracking-[0.22em] text-[#299122] uppercase">
             Case Results
           </p>
-          <h2 className="mt-4 font-serif text-4xl leading-tight text-slate-950 sm:text-5xl">
+          <h2 className="mt-4 font-serif text-3xl leading-tight text-slate-950 sm:text-4xl lg:text-5xl">
             Results shaped by preparation, advocacy, and strategic calm.
           </h2>
         </div>
@@ -35,7 +35,7 @@ export function CaseResults() {
               <p className="text-[11px] font-semibold tracking-[0.22em] text-[#627180] uppercase">
                 {result.matter}
               </p>
-              <p className="mt-6 font-serif text-3xl leading-tight text-[#24303a]">
+              <p className="mt-6 font-serif text-2xl leading-tight text-[#24303a] lg:text-3xl">
                 {result.outcome}
               </p>
             </article>

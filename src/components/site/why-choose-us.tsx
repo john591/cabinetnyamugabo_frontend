@@ -1,74 +1,67 @@
-import Link from "next/link";
-
-const storyPoints = [
-  "Droit des affaires et droit commercial",
-  "Strategie et representation en contentieux",
-  "Nous conseillons aussi les particuliers",
-];
-
 export function WhyChooseUs() {
   return (
-    <section className="overflow-hidden bg-white py-20">
-      <div className="w-full">
+    <section className="bg-white px-5 py-12 text-[#1f2937] sm:px-8 sm:py-16 lg:px-12 lg:py-20">
+      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[minmax(0,0.92fr)_minmax(420px,0.88fr)] lg:items-start lg:gap-16">
+        <div className="max-w-3xl">
+          <h2 className="font-serif text-3xl uppercase leading-tight tracking-[0.03em] text-[#172a3a] sm:text-4xl md:text-[2.75rem] lg:text-5xl">
+            Des avocats d&apos;affaires engagés pour vos décisions importantes
+          </h2>
 
-        <article className="relative overflow-hidden bg-[#0f1012]">
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage:
-                "url(https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1800&q=80)",
-            }}
-          />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,10,12,0.9)_0%,rgba(8,10,12,0.54)_42%,rgba(8,10,12,0.22)_70%,rgba(8,10,12,0.52)_100%)]" />
+          <div className="mt-8 space-y-6 text-sm leading-7 text-[#222] sm:text-base sm:leading-8 lg:text-lg lg:leading-9">
+            <p>
+              Lorsque vous faites face à une question juridique importante, vous
+              avez besoin d&apos;une équipe capable d&apos;écouter, d&apos;analyser et
+              d&apos;agir avec précision. Cabinet Nyamugabo accompagne les
+              entreprises, les institutions et les particuliers avec une approche
+              claire, rigoureuse et adaptée aux réalités locales.
+            </p>
 
-          <div className="relative grid min-h-[780px] grid-cols-[76px_minmax(0,1fr)] lg:grid-cols-[110px_minmax(0,1fr)]">
-            <div className="flex items-center justify-center border-r border-white/50 bg-black/28">
-              <p className="rotate-180 text-4xl tracking-[0.18em] text-white [writing-mode:vertical-rl] sm:text-5xl">
-                Cabinet Nyamugabo
-              </p>
-            </div>
+            <p>
+              Notre équipe intervient dans les dossiers où la stratégie, la
+              confidentialité et la rapidité d&apos;exécution comptent vraiment. Nous
+              aidons nos clients à comprendre les risques, à protéger leurs
+              intérêts et à prendre des décisions solides.
+            </p>
 
-            <div className="relative flex min-h-[780px] items-stretch">
-              <div className="flex w-full flex-col justify-between px-8 py-10 sm:px-12 sm:py-12 lg:px-16 lg:py-14">
-                <div className="ml-auto max-w-[440px] space-y-10 pt-6 text-left lg:pt-14">
-                  {storyPoints.map((point) => (
-                    <p
-                      key={point}
-                      className="text-3xl font-light uppercase tracking-[0.2em] text-white sm:text-4xl"
-                    >
-                      {point}
-                    </p>
-                  ))}
-                </div>
-
-                <div className="flex justify-end">
-                  <div className="w-full max-w-[680px] border border-black/8 bg-white p-8 shadow-[0_24px_60px_rgba(15,23,42,0.16)] sm:p-10">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-[#0d4595]">
-                      Pourquoi le Cabinet Nyamugabo
-                    </p>
-                    <h2 className="mt-4 font-sans text-4xl leading-tight text-slate-950 sm:text-5xl">
-                      Qu&apos;est-ce qui rend notre cabinet différent?
-                    </h2>
-                    <p className="mt-6 max-w-2xl text-lg leading-9 text-slate-700">
-                      Nous collaborons etroitement avec nos clients dans le cadre de dossiers commerciaux,
-                      de litiges et de dossiers prives a forts enjeux, en combinant jugement stategique,
-                      prepation minutieuse et communication claire a chaque etape.
-                    </p>
-
-                    <div className="mt-8 flex flex-wrap items-center gap-4">
-                      <Link
-                        href="/about-us"
-                        className="inline-flex items-center justify-center border border-[#0d4595]/20 bg-white px-6 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-[#0d4595] transition hover:border-[#0d4595] hover:bg-[#0d4595] hover:text-white"
-                      >
-                        Lire plus
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <p>
+              Nos{" "}
+              <span className="font-semibold text-[#0d4595]">
+                avocats d&apos;affaires
+              </span>{" "}
+              et{" "}
+              <span className="font-semibold text-[#0d4595]">
+                conseils juridiques
+              </span>{" "}
+              servent les clients à Kinshasa, Bukavu et au-delà. Où que vous
+              soyez, vous pouvez compter sur un accompagnement attentif,
+              structuré et orienté vers des solutions concrètes.
+            </p>
           </div>
-        </article>
+
+          <div className="mt-9 border-t border-slate-200 pt-8">
+            <h3 className="font-serif text-2xl uppercase leading-tight tracking-[0.03em] text-[#172a3a] sm:text-3xl lg:text-4xl">
+              La différence Cabinet Nyamugabo
+            </h3>
+            <p className="mt-4 text-sm leading-7 text-[#222] sm:text-base sm:leading-8 lg:text-lg lg:leading-9">
+              Nous privilégions une relation directe avec nos clients, une
+              préparation minutieuse et une communication transparente. Chaque
+              dossier est traité avec sérieux afin de construire une réponse
+              juridique utile, responsable et durable.
+            </p>
+          </div>
+        </div>
+
+        <div className="lg:sticky lg:top-28">
+          <div className="aspect-[4/5] overflow-hidden bg-slate-100 shadow-[0_18px_50px_rgba(15,23,42,0.1)] sm:aspect-[5/4] lg:aspect-[4/5]">
+            <div
+              className="h-full w-full bg-cover bg-center"
+              style={{
+                backgroundImage:
+                  "url(https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=85)",
+              }}
+            />
+          </div>
+        </div>
       </div>
     </section>
   );

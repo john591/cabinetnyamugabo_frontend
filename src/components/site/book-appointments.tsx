@@ -130,10 +130,10 @@ export function BookAppointments() {
       <div className="mx-auto w-full max-w-5xl border border-[rgba(13,69,149,0.14)] bg-white px-4 py-5 shadow-[0_18px_48px_rgba(15,23,42,0.06)] sm:px-6 sm:py-7 md:px-8 md:py-8">
         <div className="flex flex-col gap-4 border-b border-dashed border-[rgba(13,69,149,0.14)] pb-5 md:flex-row md:items-start md:justify-between md:gap-8 md:pb-6">
           <div className="min-w-0">
-            <p className="text-2xl font-semibold leading-tight text-[#24303a] sm:text-4xl md:text-5xl">
+            <p className="text-2xl font-semibold leading-tight text-[#24303a] sm:text-3xl md:text-[2.25rem] lg:text-5xl">
               Formulaire de Prise de Rendez-vous
             </p>
-            <p className="mt-2 text-base italic leading-7 text-slate-600 sm:mt-3 sm:text-lg md:text-xl">
+            <p className="mt-2 text-sm italic leading-6 text-slate-600 sm:mt-3 sm:text-base md:text-lg lg:text-xl">
               Planifiez votre consultation juridique
             </p>
           </div>
@@ -150,7 +150,7 @@ export function BookAppointments() {
 
         <form className="mt-6 sm:mt-7" onSubmit={handleSubmit}>
           <section>
-            <h2 className="text-xl font-semibold leading-tight text-[#24303a] sm:text-2xl md:text-3xl">
+            <h2 className="text-lg font-semibold leading-tight text-[#24303a] sm:text-xl md:text-2xl lg:text-3xl">
               Information Personnelle du Client
             </h2>
 
@@ -220,7 +220,7 @@ export function BookAppointments() {
           </section>
 
           <section className="mt-7 sm:mt-8">
-            <h2 className="text-xl font-semibold leading-tight text-[#24303a] sm:text-2xl md:text-3xl">
+            <h2 className="text-lg font-semibold leading-tight text-[#24303a] sm:text-xl md:text-2xl lg:text-3xl">
               Details du Rendez-vous
             </h2>
 

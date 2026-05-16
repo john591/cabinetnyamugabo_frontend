@@ -112,10 +112,10 @@ export function Hero() {
                     >
                       {slide.eyebrow}
                     </p>
-                    <h1 className="mt-4 font-serif text-3xl leading-[1.02] sm:mt-5 sm:text-5xl md:text-6xl lg:mt-6 lg:text-[5.5rem]">
+                    <h1 className="mt-4 font-serif text-3xl leading-[1.06] sm:mt-5 sm:text-4xl md:text-5xl lg:mt-6 lg:text-[5.5rem] lg:leading-[1.02]">
                       {slide.title}
                     </h1>
-                    <p className={`mt-4 max-w-xl text-sm leading-7 sm:mt-5 sm:text-base md:text-lg md:leading-8 lg:mt-6 ${slide.descriptionClassName}`}>
+                    <p className={`mt-4 max-w-xl text-sm leading-7 sm:mt-5 sm:text-base md:leading-8 lg:mt-6 lg:text-lg ${slide.descriptionClassName}`}>
                       {slide.description}
                     </p>
 
@@ -126,18 +126,6 @@ export function Hero() {
                       >
                         En Savoir Plus
                       </Link>
-                      <button
-                        type="button"
-                        onClick={() => setIsVideoOpen(true)}
-                        className="inline-flex items-center gap-3 text-sm font-medium transition hover:opacity-75 sm:gap-4 sm:text-base md:text-lg"
-                      >
-                        <span className={`flex h-11 w-11 items-center justify-center rounded-full sm:h-14 sm:w-14 ${slide.playClassName}`}>
-                          <span className="ml-0.5 text-base sm:ml-1 sm:text-xl">▶</span>
-                        </span>
-                        <span className="uppercase tracking-[0.06em]">
-                          
-                        </span>
-                      </button>
                     </div>
                   </div>
                 </div>

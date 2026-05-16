@@ -1,130 +1,128 @@
-"use client";
-
-import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
 
-import {
-  DjangoService,
-  getFeaturedServices,
-  mapServiceToSlide,
-} from "@/lib/django-api";
+import { getFeaturedServices } from "@/lib/django-api";
 
-const fallbackImages = [
-  "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=80",
-  "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1600&q=80",
+type ServiceCard = {
+  id: string | number;
+  title: string;
+  description: string;
+  image: string;
+};
+
+const serviceImages = [
+  "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1400&q=85",
+  "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1400&q=85",
+  "https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=1400&q=85",
+  "https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=1400&q=85",
+  "https://images.unsplash.com/photo-1568992688065-536aad8a12f6?auto=format&fit=crop&w=1400&q=85",
+  "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1400&q=85",
 ];
 
-export function Services() {
-  const [slides, setSlides] = useState<
-    ReturnType<typeof mapServiceToSlide>[]
-  >([]);
+const fallbackServices: ServiceCard[] = [
+  {
+    id: "business-law",
+    title: "Droit des affaires et conseil aux entreprises",
+    description:
+      "Nous accompagnons les sociétés, dirigeants et investisseurs dans la structuration, la négociation et la sécurisation de leurs opérations importantes.",
+    image: serviceImages[0],
+  },
+  {
+    id: "litigation",
+    title: "Contentieux, arbitrage et gestion des différends",
+    description:
+      "Notre équipe intervient dans les litiges sensibles avec une stratégie claire, une préparation rigoureuse et une défense ferme des intérêts du client.",
+    image: serviceImages[1],
+  },
+  {
+    id: "property",
+    title: "Droit immobilier, foncier et patrimonial",
+    description:
+      "Nous aidons nos clients à protéger leurs droits, clarifier les titres, prévenir les risques et résoudre les conflits liés aux biens et aux investissements.",
+    image: serviceImages[2],
+  },
+  {
+    id: "public-law",
+    title: "Droit public, institutions et conformité",
+    description:
+      "Nous conseillons les acteurs publics et privés dans leurs relations administratives, réglementaires et institutionnelles avec une approche pratique.",
+    image: serviceImages[3],
+  },
+];
 
-  useEffect(() => {
-    let isMounted = true;
-
-    getFeaturedServices().then((services: DjangoService[]) => {
-      if (isMounted) {
-        setSlides(
-          services.map((service, index) =>
-            mapServiceToSlide(service, index, fallbackImages),
-          ),
-        );
-      }
-    });
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
+export async function Services() {
+  const featuredServices = await getFeaturedServices();
+  const services =
+    featuredServices.length > 0
+      ? featuredServices.slice(0, 6).map((service) => ({
+          id: service.id,
+          title: service.title,
+          description: service.short_description || service.description,
+          image:
+            service.imagelink ||
+            ("image" in service ? service.image : "") ||
+            serviceImages[service.order % serviceImages.length] ||
+            serviceImages[0],
+        }))
+      : fallbackServices;
+  const displayedServices = services.slice(0, 6);
 
   return (
-    <section className="overflow-hidden bg-[#f5faf2] py-20 sm:py-24">
-      <div className="mx-auto mb-10 max-w-7xl px-6 sm:px-8 lg:px-12">
-        <div className="max-w-3xl">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-slate-500">
-            DOMAINES D&apos;INTERVENTION
-          </p>
-          <h2 className="mt-4 font-serif text-4xl leading-tight text-slate-950 sm:text-5xl">
-            Nos Expertises
-          </h2>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-slate-500">
-            Un accompagnement juridique complet pour les acteurs economiques en
-            Republique Democratique du Congo.
-          </p>
-        </div>
-      </div>
+    <section className="bg-[#13293a] px-5 py-14 text-white sm:px-8 sm:py-16 lg:px-12 lg:py-20">
+      <div className="mx-auto max-w-7xl">
+        <h2 className="text-center font-serif text-3xl uppercase leading-tight tracking-[0.03em] text-white sm:text-4xl md:text-5xl">
+          Les domaines d&apos;expertise
+        </h2>
 
-      <Swiper
-        modules={[Navigation, Pagination, Autoplay]}
-        loop
-        centeredSlides
-        slidesPerView={1.15}
-        spaceBetween={18}
-        autoplay={{ delay: 5000, disableOnInteraction: false }}
-        pagination={{ clickable: true }}
-        breakpoints={{
-          640: {
-            slidesPerView: 1.25,
-            spaceBetween: 24,
-          },
-          1024: {
-            slidesPerView: 1.6,
-            spaceBetween: 30,
-          },
-          1280: {
-            slidesPerView: 1.95,
-            spaceBetween: 36,
-          },
-        }}
-        className="services-swiper !overflow-visible"
-      >
-        {slides.map((service) => (
-          <SwiperSlide key={service.id}>
-            <article className="services-slide relative mx-auto h-[540px] w-full overflow-hidden bg-black shadow-[0_24px_70px_rgba(15,23,42,0.18)] sm:h-[620px] xl:h-[680px]">
+        <div className="mt-9 grid gap-5 md:grid-cols-2 lg:mt-11 lg:gap-7">
+          {displayedServices.map((service, index) => (
+            <article
+              key={service.id}
+              className={`relative min-h-[360px] overflow-hidden bg-[#203446] px-7 py-10 sm:min-h-[400px] sm:px-10 sm:py-12 lg:min-h-[450px] lg:px-14 lg:py-16 ${
+                index % 2 === 0 ? "text-center" : "text-left"
+              }`}
+            >
               <div
-                className="absolute inset-0 bg-cover bg-center"
+                className="absolute inset-0 bg-cover bg-center opacity-38 transition duration-700 hover:scale-[1.03]"
                 style={{ backgroundImage: `url(${service.image})` }}
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/82 via-black/45 to-black/20" />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_35%,rgba(255,255,255,0.12),transparent_18%),radial-gradient(circle_at_58%_72%,rgba(255,255,255,0.1),transparent_10%)]" />
-              <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-black/55 to-transparent" />
+              <div className="absolute inset-0 bg-[#13293a]/78" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#13293a]/92 via-[#13293a]/55 to-transparent" />
 
-              <div className="relative z-10 flex h-full items-end px-8 py-10 sm:px-12 sm:py-12 lg:px-16 lg:py-16">
-                <div className="max-w-2xl text-white">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-white/75">
-                    {service.label}
-                  </p>
-                  <h3 className="mt-5 font-serif text-4xl leading-tight sm:text-5xl lg:text-6xl">
-                    {service.title}
-                  </h3>
-                  <p className="mt-5 max-w-xl text-base leading-8 text-white/82 sm:text-lg">
-                    {service.description}
-                  </p>
+              <div className="relative z-10 flex min-h-[280px] flex-col justify-end sm:min-h-[304px] lg:min-h-[322px]">
+                <h3 className="font-serif text-2xl uppercase leading-tight tracking-[0.03em] text-[#c99d78] sm:text-3xl lg:text-4xl">
+                  {service.title}
+                </h3>
 
-                  <div className="mt-8 flex flex-wrap gap-4">
-                    <Link
-                      href="/services"
-                      className="text-sm font-semibold uppercase tracking-[0.2em] text-white transition hover:text-white/75"
-                    >
-                      lire plus
-                    </Link>
-                    <Link
-                      href="/book-appointment"
-                      className="border border-white/70 px-5 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white transition hover:bg-white hover:text-slate-950"
-                    >
-                      Prendre rendez-vous
-                    </Link>
-                  </div>
-                </div>
+                <p
+                  className={`mt-5 text-sm leading-7 text-white/82 sm:text-base sm:leading-8 ${
+                    index % 2 === 0 ? "mx-auto max-w-xl" : "max-w-xl"
+                  }`}
+                >
+                  {service.description}
+                </p>
+
+                <Link
+                  href="/services"
+                  className={`mt-8 inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.14em] text-white transition hover:text-[#c99d78] sm:text-sm ${
+                    index % 2 === 0 ? "justify-center" : ""
+                  }`}
+                >
+                  Lire plus <span aria-hidden>→</span>
+                </Link>
               </div>
             </article>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+          ))}
+        </div>
+
+        <div className="mt-10 flex justify-center">
+          <Link
+            href="/services"
+            className="inline-flex items-center justify-center gap-3 border border-white/35 px-6 py-4 text-center text-xs font-bold uppercase tracking-[0.14em] text-white transition hover:border-[#c99d78] hover:text-[#c99d78] sm:text-sm"
+          >
+            Tous nos domaines d&apos;expertise <span aria-hidden>→</span>
+          </Link>
+        </div>
+      </div>
     </section>
   );
 }

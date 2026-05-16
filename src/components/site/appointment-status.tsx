@@ -25,11 +25,11 @@ export function AppointmentStatus({
         <p className="text-xs font-semibold uppercase tracking-[0.26em] text-[#299122]">
           {eyebrow}
         </p>
-        <h1 className="mt-4 font-serif text-4xl leading-tight text-[#24303a] sm:text-5xl">
+        <h1 className="mt-4 font-serif text-3xl leading-tight text-[#24303a] sm:text-4xl lg:text-5xl">
           {title}
         </h1>
         <div
-          className={`mt-6 border px-4 py-4 text-base leading-7 ${toneStyles[tone]}`}
+          className={`mt-6 border px-4 py-4 text-sm leading-7 sm:text-base ${toneStyles[tone]}`}
         >
           {message}
         </div>

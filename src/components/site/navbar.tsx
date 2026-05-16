@@ -8,8 +8,8 @@ const primaryLinks = [
   "Appropos de Nous",
   "Services",
   'Notre Equipe',
-  "Environnement & nous",
-  "Blog",
+  "Environnement",
+  "Articles",
   "Contact-nous",
 ];
 
@@ -18,8 +18,8 @@ const mainSections = [
   "Appropos de Nous",
   "Services",
   'Notre Equipe',
-  "Environnement & nous",
-  "Blog",
+  "Environnement",
+  "Articles",
   "Contact-nous",
 ];
 
@@ -67,9 +67,9 @@ function getHref(label: string) {
       return "/services";
     case "Notre Equipe":
       return "/our-team";
-    case "Environnement & nous":
+    case "Environnement":
       return "/environment";
-    case "Blog":
+    case "Articles":
       return "/news";
     case "Contact-nous":
       return "#contact";

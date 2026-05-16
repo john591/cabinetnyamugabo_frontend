@@ -1,23 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
-function getApiBaseUrl() {
-  const configuredBaseUrl =
-    process.env.NEXT_PUBLIC_DJANGO_API_BASE_URL ??
-    process.env.DJANGO_API_BASE_URL;
-
-  if (configuredBaseUrl) {
-    return configuredBaseUrl.replace(/\/$/, "");
-  }
-
-  if (process.env.NODE_ENV !== "production") {
-    return "http://127.0.0.1:8000/api";
-  }
-
-  return "https://cabinetnyamugabo.onrender.com/api";
-}
+import { getDjangoApiBaseUrl } from "@/lib/api-config";
 
 export async function POST(request: NextRequest) {
-  const apiBaseUrl = getApiBaseUrl();
+  const apiBaseUrl = getDjangoApiBaseUrl();
 
   if (!apiBaseUrl) {
     return NextResponse.json(

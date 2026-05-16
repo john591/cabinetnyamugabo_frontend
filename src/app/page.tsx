@@ -1,5 +1,4 @@
 import { Contact } from "@/components/site/contact";
-import { CTA } from "@/components/site/cta";
 import { Footer } from "@/components/site/footer";
 import { Hero } from "@/components/site/hero";
 import { Navbar } from "@/components/site/navbar";
@@ -14,11 +13,11 @@ export default function Home() {
       <Navbar />
       <main id="main-content">
         <Hero />
-        <Services />
         <WhyChooseUs />
+        <Services />
         <OurTeam />
         <News />
-        <CTA />
+        {/* <CTA /> */}
         <Contact />
       </main>
       <Footer />

@@ -58,12 +58,12 @@ export function OurTeamDirectory({ team }: OurTeamDirectoryProps) {
               <p className="text-[11px] font-semibold uppercase tracking-[0.26em] text-[#299122]">
                 Nos experts
               </p>
-              <h1 className="mt-5 max-w-3xl font-serif text-5xl leading-none text-slate-950 sm:text-6xl lg:text-7xl">
+              <h1 className="mt-5 max-w-3xl font-serif text-3xl leading-tight text-slate-950 sm:text-4xl md:text-5xl lg:text-7xl lg:leading-none">
                 Tous nos professionnels
               </h1>
             </div>
 
-            <p className="max-w-2xl text-base leading-8 text-slate-600 sm:text-lg sm:leading-9">
+            <p className="max-w-2xl text-sm leading-7 text-slate-600 sm:text-base sm:leading-8 lg:text-lg lg:leading-9">
               Retrouvez les membres du Cabinet Nyamugabo par nom, ville et
               domaine d&apos;intervention. Chaque profil vous donne un acces
               direct aux coordonnees utiles pour echanger avec notre equipe.
@@ -76,7 +76,7 @@ export function OurTeamDirectory({ team }: OurTeamDirectoryProps) {
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[320px_minmax(0,1fr)] xl:grid-cols-[360px_minmax(0,1fr)]">
           <aside className="h-fit border border-[rgba(13,69,149,0.14)] bg-white p-5 sm:p-6 lg:sticky lg:top-28">
             <div className="flex items-center justify-between gap-4 border-b border-dashed border-[rgba(13,69,149,0.18)] pb-5">
-              <h2 className="text-xl font-semibold text-slate-950">Filtrer</h2>
+              <h2 className="text-lg font-semibold text-slate-950 sm:text-xl">Filtrer</h2>
               <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#0d4595]">
                 {filteredTeam.length} resultat
                 {filteredTeam.length > 1 ? "s" : ""}
@@ -146,7 +146,7 @@ export function OurTeamDirectory({ team }: OurTeamDirectoryProps) {
                 <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-slate-500">
                   Resultats
                 </p>
-                <h2 className="mt-2 text-3xl font-semibold text-slate-950">
+                <h2 className="mt-2 text-2xl font-semibold text-slate-950 lg:text-3xl">
                   {filteredTeam.length} professionnel
                   {filteredTeam.length > 1 ? "s" : ""}
                 </h2>
@@ -171,7 +171,7 @@ export function OurTeamDirectory({ team }: OurTeamDirectoryProps) {
 
                     <div className="flex min-h-[250px] flex-col p-5 sm:p-6">
                       <div>
-                        <h3 className="text-2xl font-semibold leading-tight text-[#0d4595] underline decoration-[#0d4595]/25 underline-offset-4">
+                        <h3 className="text-xl font-semibold leading-tight text-[#0d4595] underline decoration-[#0d4595]/25 underline-offset-4 lg:text-2xl">
                           {member.name}
                         </h3>
                         <p className="mt-3 text-sm font-medium leading-6 text-slate-700">

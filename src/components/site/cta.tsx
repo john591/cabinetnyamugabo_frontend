@@ -6,10 +6,10 @@ export function CTA() {
           <p className="text-[11px] font-semibold tracking-[0.22em] text-[#b9eba2] uppercase">
             CTA
           </p>
-          <h2 className="mt-4 font-serif text-4xl leading-tight sm:text-5xl">
+          <h2 className="mt-4 font-serif text-3xl leading-tight sm:text-4xl lg:text-5xl">
             Besoin de conseils juridiques fiables pour une affaire delicate ?
           </h2>
-          <p className="mt-5 text-base leading-8 text-white/78">
+          <p className="mt-5 text-sm leading-7 text-white/78 sm:text-base lg:leading-8">
             Contactez notre equipe au plus vite. Une strategie juridique efficace se met souvent en place avant meme que le probleme ne devienne urgent. Ne laissez pas les incertitudes juridiques vous submerger, prenez les devants et assurez la protection de vos droits des aujourd&apos;hui.
           </p>
         </div>

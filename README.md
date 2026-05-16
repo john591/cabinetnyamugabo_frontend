@@ -16,6 +16,11 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+The frontend defaults to the deployed Django API at
+`https://cabinetnyamugabo.onrender.com/api`, so you do not need to run or
+change the backend for local frontend development. To point the frontend at a
+different Django API, set `NEXT_PUBLIC_DJANGO_API_BASE_URL` in `.env.local`.
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
