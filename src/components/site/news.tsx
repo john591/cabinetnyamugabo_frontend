@@ -27,17 +27,18 @@ function NewsMeta({ post }: { post: NewsCard }) {
   );
 }
 
-function AuthorLine({ name = "Cabinet Nyamugabo" }: { name?: string }) {
+function AuthorLine({ post }: { post: NewsCard }) {
   return (
-    <div className="mt-auto flex items-center gap-3 pt-6 text-sm lg:gap-4 lg:pt-8 lg:text-base">
+    <div className="mt-auto flex items-center gap-4 pt-6 text-sm lg:pt-8 lg:text-base">
       <div
-        className="h-11 w-11 rounded-full bg-cover bg-center"
+        className="h-14 w-14 shrink-0 rounded-full bg-cover bg-center"
         style={{
-          backgroundImage:
-            "url(https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&q=80)",
+          backgroundImage: `url(${post.authorImage})`,
         }}
+        role="img"
+        aria-label={post.authorName}
       />
-      <p className="font-bold text-black">{name}</p>
+      <p className="font-bold text-black">{post.authorName}</p>
     </div>
   );
 }
@@ -86,6 +87,7 @@ export async function News() {
                 <p className="mt-3 text-sm leading-6 text-[#777] sm:text-base lg:mt-4 lg:text-lg lg:leading-7">
                   {featured.summary}
                 </p>
+                <AuthorLine post={featured} />
               </div>
             </article>
           </Link>
@@ -108,7 +110,7 @@ export async function News() {
                   <p className="mt-3 text-sm leading-6 text-[#777] sm:text-base lg:mt-4 lg:text-lg lg:leading-7">
                     {side.summary}
                   </p>
-                  <AuthorLine />
+                  <AuthorLine post={side} />
                 </div>
               </article>
             </Link>
@@ -138,15 +140,7 @@ export async function News() {
                   <p className="mt-3 text-sm leading-6 text-[#777] sm:text-base lg:mt-4 lg:text-lg lg:leading-7">
                     {post.summary}
                   </p>
-                  <AuthorLine
-                    name={
-                      index === 0
-                        ? "Équipe Cabinet"
-                        : index === 1
-                          ? "Analyse juridique"
-                          : "Cabinet Nyamugabo"
-                    }
-                  />
+                  <AuthorLine post={post} />
                 </div>
               </article>
             </Link>

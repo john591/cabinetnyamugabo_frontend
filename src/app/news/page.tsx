@@ -41,7 +41,7 @@ function PostMeta({ post }: { post: NewsCard }) {
       <span>, by</span>
       <UserRound className="h-4 w-4 text-slate-400" aria-hidden />
       <span className="text-[#9a1657] underline underline-offset-2">
-        Cabinet Nyamugabo
+        {post.authorName}
       </span>
     </div>
   );

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useMemo, useState } from "react";
 
 type TeamDirectoryMember = {
@@ -45,34 +46,20 @@ export function OurTeamDirectory({ team }: OurTeamDirectoryProps) {
 
   return (
     <>
-      <section className="border-b border-[rgba(13,69,149,0.14)] bg-white px-4 pb-14 pt-16 sm:px-6 sm:pb-20 sm:pt-20 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <nav className="flex gap-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">
-            <span>Accueil</span>
-            <span>/</span>
-            <span className="text-[#0d4595]">Notre equipe</span>
-          </nav>
-
-          <div className="mt-10 grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-end">
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.26em] text-[#299122]">
-                Nos experts
-              </p>
-              <h1 className="mt-5 max-w-3xl font-serif text-3xl leading-tight text-slate-950 sm:text-4xl md:text-5xl lg:text-7xl lg:leading-none">
-                Tous nos professionnels
-              </h1>
-            </div>
-
-            <p className="max-w-2xl text-sm leading-7 text-slate-600 sm:text-base sm:leading-8 lg:text-lg lg:leading-9">
-              Retrouvez les membres du Cabinet Nyamugabo par nom, ville et
-              domaine d&apos;intervention. Chaque profil vous donne un acces
-              direct aux coordonnees utiles pour echanger avec notre equipe.
-            </p>
-          </div>
-        </div>
+      <section className="relative isolate flex min-h-[360px] items-center justify-center overflow-hidden border-b border-[rgba(13,69,149,0.12)] bg-slate-950 px-4 py-16 text-center sm:min-h-[460px] sm:px-6 sm:py-20 lg:min-h-[540px] lg:px-8">
+        <Image
+          src="https://nyamugabo-bucket.s3.us-west-2.amazonaws.com/black-lawyers-team-hero.png"
+          alt="Equipe d'avocats du Cabinet Nyamugabo"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[50%_38%] sm:object-[50%_42%] lg:object-center"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.04)_45%,rgba(255,255,255,0.18)),radial-gradient(circle_at_50%_44%,rgba(255,255,255,0.16)_0%,rgba(255,255,255,0.08)_34%,rgba(255,255,255,0)_66%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white/70 to-transparent" />
       </section>
 
-      <section className="bg-[#f5faf2] px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
+      <section className="bg-white px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[320px_minmax(0,1fr)] xl:grid-cols-[360px_minmax(0,1fr)]">
           <aside className="h-fit border border-[rgba(13,69,149,0.14)] bg-white p-5 sm:p-6 lg:sticky lg:top-28">
             <div className="flex items-center justify-between gap-4 border-b border-dashed border-[rgba(13,69,149,0.18)] pb-5">

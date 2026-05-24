@@ -15,7 +15,7 @@ const slides = [
     description:
       "Le cabinet Nyamugabo accompagne les particuliers et les entreprises en leur offrant des services juridiques complets, allant du conseil à la représentation en justice, avec une expertise en droit des affaires, fiscal et contentieux.",
     image:
-      "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=1800&q=80",
+      "https://nyamugabo-bucket.s3.us-west-2.amazonaws.com/media/claude-nyamugabo1.jpeg",
     panelClassName: "bg-[#0d4595] text-white",
     overlayClassName:
       "bg-[linear-gradient(180deg,rgba(255,255,255,0.02),transparent_24%,transparent_76%,rgba(0,0,0,0.08))]",

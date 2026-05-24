@@ -57,7 +57,7 @@ export function WhyChooseUs() {
               className="h-full w-full bg-cover bg-center"
               style={{
                 backgroundImage:
-                  "url(https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=85)",
+                  "url(https://nyamugabo-bucket.s3.us-west-2.amazonaws.com/media/claude-nyamugabo-avec-constitution.jpeg)",
               }}
             />
           </div>

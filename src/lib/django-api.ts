@@ -45,10 +45,15 @@ export type DjangoBlogPost = {
   } | null;
   author?: {
     id: number;
+    first_name?: string;
+    last_name?: string;
     full_name: string;
     slug: string;
     role: string;
+    photo?: string;
+    photo_url?: string;
   } | null;
+  featured_image_url?: string;
   featured_image: string;
   published_at: string;
 };
@@ -382,6 +387,11 @@ export function mapTeamMemberToCard(member: DjangoTeamMember) {
 }
 
 export function mapPostToCard(post: DjangoBlogPost) {
+  const authorName =
+    `${post.author?.first_name ?? ""} ${post.author?.last_name ?? ""}`.trim() ||
+    post.author?.full_name ||
+    "Cabinet Nyamugabo";
+
   return {
     slug: post.slug,
     date: formatPublishedDate(post.published_at),
@@ -389,8 +399,14 @@ export function mapPostToCard(post: DjangoBlogPost) {
     title: post.title,
     summary: post.summary,
     image:
+      post.featured_image_url ||
       post.featured_image ||
       "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=80",
+    authorName,
+    authorImage:
+      post.author?.photo_url ||
+      post.author?.photo ||
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=120&q=80",
   };
 }
 

@@ -82,11 +82,11 @@ export async function Services() {
               }`}
             >
               <div
-                className="absolute inset-0 bg-cover bg-center opacity-38 transition duration-700 hover:scale-[1.03]"
+                className="absolute inset-0 bg-cover bg-center transition duration-700 hover:scale-[1.03]"
                 style={{ backgroundImage: `url(${service.image})` }}
               />
-              <div className="absolute inset-0 bg-[#13293a]/78" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#13293a]/92 via-[#13293a]/55 to-transparent" />
+              <div className="absolute inset-0 bg-[#13293a]/32" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#13293a]/78 via-[#13293a]/24 to-transparent" />
 
               <div className="relative z-10 flex min-h-[280px] flex-col justify-end sm:min-h-[304px] lg:min-h-[322px]">
                 <h3 className="font-serif text-2xl uppercase leading-tight tracking-[0.03em] text-[#c99d78] sm:text-3xl lg:text-4xl">

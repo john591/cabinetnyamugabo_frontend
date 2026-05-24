@@ -1,7 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+
+const logoUrl =
+  "https://nyamugabo-bucket.s3.us-west-2.amazonaws.com/media/logo/logo-cabinet.png";
 
 const primaryLinks = [
    "Home",
@@ -10,7 +15,6 @@ const primaryLinks = [
   'Notre Equipe',
   "Environnement",
   "Articles",
-  "Contact-nous",
 ];
 
 const mainSections = [
@@ -20,7 +24,6 @@ const mainSections = [
   'Notre Equipe',
   "Environnement",
   "Articles",
-  "Contact-nous",
 ];
 
 const insightLinks = [
@@ -71,15 +74,26 @@ function getHref(label: string) {
       return "/environment";
     case "Articles":
       return "/news";
-    case "Contact-nous":
-      return "#contact";
     default:
       return "#";
   }
 }
 
+function isActiveHref(pathname: string, href: string) {
+  if (href === "/") {
+    return pathname === "/";
+  }
+
+  if (href.startsWith("#")) {
+    return false;
+  }
+
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
@@ -116,26 +130,41 @@ export function Navbar() {
               </span>
             </button>
 
-            <Link href="/" className="min-w-0 max-w-[190px] shrink text-left sm:max-w-none">
-              <span className="block truncate font-sans text-[15px] font-semibold tracking-[0.16em] uppercase text-[#0d4595] sm:text-[20px] sm:tracking-[0.2em] md:text-[24px]">
-                Cabinet Nyamugabo
-              </span>
-              <span className="mt-1 hidden text-[9px] font-semibold tracking-[0.24em] uppercase text-slate-500 sm:block sm:text-[10px] sm:tracking-[0.28em]">
-                Avocats d&apos;Affaires
-              </span>
+            <Link
+              href="/"
+              className="flex min-w-[120px] shrink-0 items-center sm:min-w-[160px]"
+            >
+              <Image
+                src={logoUrl}
+                alt="Cabinet Nyamugabo"
+                width={230}
+                height={92}
+                priority
+                className="h-16 w-auto shrink-0 object-contain sm:h-20 lg:h-24"
+              />
             </Link>
           </div>
 
           <nav className="hidden items-center gap-6 2xl:flex">
-            {primaryLinks.map((item) => (
-              <Link
-                key={item}
-                href={getHref(item)}
-                className="text-[11px] font-semibold tracking-[0.24em] uppercase text-slate-800 transition hover:text-[#0d4595]"
-              >
-                {item}
-              </Link>
-            ))}
+            {primaryLinks.map((item) => {
+              const href = getHref(item);
+              const isActive = isActiveHref(pathname, href);
+
+              return (
+                <Link
+                  key={item}
+                  href={href}
+                  aria-current={isActive ? "page" : undefined}
+                  className={`relative pb-2 text-[11px] font-semibold tracking-[0.24em] uppercase transition after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-center after:bg-[#0d4595] after:transition-transform ${
+                    isActive
+                      ? "text-[#0d4595] after:scale-x-100"
+                      : "text-slate-800 after:scale-x-0 hover:text-[#0d4595] hover:after:scale-x-100"
+                  }`}
+                >
+                  {item}
+                </Link>
+              );
+            })}
           </nav>
 
           <div className="hidden min-w-0 flex-1 items-center justify-end gap-4 2xl:flex">
@@ -180,16 +209,26 @@ export function Navbar() {
                     Main Sections
                   </p>
                   <div className="mt-4 grid gap-2.5 sm:gap-3">
-                    {mainSections.map((item) => (
-                      <Link
-                        key={item}
-                        href={getHref(item)}
-                        className="font-serif text-2xl text-slate-950 transition hover:text-[#0d4595] sm:text-3xl"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        {item}
-                      </Link>
-                    ))}
+                    {mainSections.map((item) => {
+                      const href = getHref(item);
+                      const isActive = isActiveHref(pathname, href);
+
+                      return (
+                        <Link
+                          key={item}
+                          href={href}
+                          aria-current={isActive ? "page" : undefined}
+                          className={`relative w-fit pb-1 font-serif text-2xl transition after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:bg-[#0d4595] after:transition-transform sm:text-3xl ${
+                            isActive
+                              ? "text-[#0d4595] after:scale-x-100"
+                              : "text-slate-950 after:scale-x-0 hover:text-[#0d4595] hover:after:scale-x-100"
+                          }`}
+                          onClick={() => setIsOpen(false)}
+                        >
+                          {item}
+                        </Link>
+                      );
+                    })}
                   </div>
                 </div>
 

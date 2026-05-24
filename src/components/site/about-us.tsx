@@ -28,7 +28,7 @@ export function AboutUs() {
               <span className="hidden h-px w-40 bg-white/78 sm:block" />
               <div>
                 <h1 className="font-serif text-3xl uppercase leading-tight tracking-[0.03em] sm:text-4xl md:text-5xl">
-                  About Cabinet Nyamugabo
+                  À propos du Cabinet Nyamugabo
                 </h1>
                 <p className="mt-3 text-sm text-white/86">
                   Accueil <span className="mx-2">›</span> À propos du cabinet
@@ -79,7 +79,7 @@ export function AboutUs() {
                 className="aspect-[4/5] bg-cover bg-center sm:aspect-[5/4] lg:aspect-[4/5]"
                 style={{
                   backgroundImage:
-                    "url(https://nyamugabo-bucket.s3.amazonaws.com/media/team/908f3d27735b4441afc32ec8b95ca711_lawyr3.jpg)",
+                    "url(https://nyamugabo-bucket.s3.us-west-2.amazonaws.com/media/claude-nyamugabo1.jpeg)",
                 }}
               />
             </div>

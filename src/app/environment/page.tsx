@@ -103,11 +103,11 @@ export default function EnvironmentPage() {
 
           <div className="relative z-10 mx-auto flex min-h-[640px] max-w-7xl flex-col justify-center px-5 py-16 sm:px-8 lg:px-12">
             <h1 className="max-w-4xl font-serif text-5xl leading-[0.98] tracking-[-0.02em] text-white sm:text-7xl lg:text-8xl">
-              Making
-              <span className="block">Sustainability</span>
+              Faire
+              <span className="block">de la Durabilité</span>
               <span className="mt-2 flex items-center gap-5">
                 <span className="text-[#d3fb79]">✣</span>
-                Happen
+                une Réalité.
               </span>
             </h1>
 
@@ -245,7 +245,8 @@ export default function EnvironmentPage() {
         <section className="bg-[#f7f7f2] px-5 py-16 text-[#203425] sm:px-8 lg:px-12 lg:py-20">
           <div className="mx-auto max-w-7xl">
             <h2 className="font-serif text-4xl leading-tight sm:text-5xl">
-              Latest Thinking
+              Des références concrètes dans les secteurs minier, énergétique,
+              industriel, routier et urbain.
             </h2>
 
             <div className="mt-10 grid gap-6 lg:grid-cols-3">

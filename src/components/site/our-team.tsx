@@ -13,32 +13,12 @@ type TeamMemberCard = {
   image: string;
 };
 
-const fallbackTeam: TeamMemberCard[] = [
-  {
-    name: "Aline Nyamugabo",
-    role: "Managing Partner",
-    bio: "Aline accompagne les clients du Cabinet Nyamugabo avec rigueur, écoute et une approche stratégique adaptée aux enjeux de chaque dossier.",
-    image:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    name: "David Ilunga",
-    role: "Head of Disputes",
-    bio: "David intervient dans les dossiers contentieux sensibles avec une préparation minutieuse et une communication claire.",
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    name: "Clarisse Mbayo",
-    role: "Counsel, Private Clients",
-    bio: "Clarisse conseille les clients privés et institutionnels avec une attention particulière portée aux risques et aux objectifs pratiques.",
-    image:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=900&q=80",
-  },
-];
+type OurTeamProps = {
+  team: TeamMemberCard[];
+};
 
-export function OurTeam() {
-  const [team, setTeam] = useState<TeamMemberCard[]>(fallbackTeam);
+export function OurTeam({ team: initialTeam }: OurTeamProps) {
+  const [team, setTeam] = useState<TeamMemberCard[]>(initialTeam);
 
   useEffect(() => {
     let isMounted = true;
@@ -51,9 +31,7 @@ export function OurTeam() {
         }
       })
       .catch(() => {
-        if (isMounted) {
-          setTeam(fallbackTeam);
-        }
+        // Keep the server-rendered team if the client refresh cannot reach the API.
       });
 
     return () => {
@@ -75,10 +53,12 @@ export function OurTeam() {
   }
 
   return (
-    <section id="team" className="overflow-hidden bg-white py-10 sm:py-12">
-      <div className="mx-auto max-w-7xl px-5 pb-6 sm:px-6 lg:px-8">
+    <section id="team" className="overflow-hidden bg-white pb-10 sm:pb-12">
+
+      <div className="mx-auto max-w-7xl px-5 pb-6 pt-10 sm:px-6 sm:pt-12 lg:px-8">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-4xl">
+            <br /><br />
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#0d4595]">
               Notre equipe
             </p>

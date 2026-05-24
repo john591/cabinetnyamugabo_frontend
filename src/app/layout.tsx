@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Cabinet Nyamugabo",
-  description: "A refined law firm website for trusted legal counsel.",
+  description: "Cabinet d'avocats d'affaires basé à Kinshasa et Bukavu. C'est une structure specialisée dans l'accompagnement juridique, stratégique et reglementaire des entreprises, institutions et particuliers. Notre équipe d'avocats expérimentés offre des services complets en droit des affaires, droit fiscal, contentieux et droit public, avec une approche pratique et orientée vers les solutions.",
 };
 
 export default function RootLayout({

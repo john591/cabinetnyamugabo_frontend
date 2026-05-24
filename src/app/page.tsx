@@ -6,8 +6,13 @@ import { News } from "@/components/site/news";
 import { OurTeam } from "@/components/site/our-team";
 import { Services } from "@/components/site/services";
 import { WhyChooseUs } from "@/components/site/why-choose-us";
+import { getTeamMembers, mapTeamMemberToCard } from "@/lib/django-api";
 
-export default function Home() {
+export const dynamic = "force-dynamic";
+
+export default async function Home() {
+  const team = (await getTeamMembers()).map(mapTeamMemberToCard);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
@@ -15,7 +20,7 @@ export default function Home() {
         <Hero />
         <WhyChooseUs />
         <Services />
-        <OurTeam />
+        <OurTeam team={team} />
         <News />
         {/* <CTA /> */}
         <Contact />
