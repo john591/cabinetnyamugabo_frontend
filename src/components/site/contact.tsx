@@ -23,21 +23,21 @@ export function Contact() {
 
           <h2 className="mt-6 max-w-4xl text-4xl font-bold leading-[1.02] tracking-tight sm:text-5xl md:text-[3.5rem] lg:mt-8 lg:text-8xl lg:leading-[0.95]">
             Experts en
-            <span className="block text-[#020d22]">requêtes &amp;</span>
-            <span className="block text-[#020d22]">consultations</span>
+            <span className="block text-[#0D4595]">requêtes &amp;</span>
+            <span className="block text-[#0D4595]">consultations</span>
           </h2>
 
           <div className="mt-10 flex flex-wrap items-center gap-5">
             <a
               href={`tel:${office.phone.replace(/\s+/g, "")}`}
-              className="rounded-full bg-[#020d22] px-6 py-3 text-center text-base font-bold text-white transition hover:bg-[#06172f] lg:px-8 lg:py-4 lg:text-xl"
+              className="rounded-full bg-[#0D4595] px-6 py-3 text-center text-base font-bold text-white transition hover:bg-[#0A3777] lg:px-8 lg:py-4 lg:text-xl"
             >
               Appeler {office.phone}
               <span className="block text-xs font-bold">Ligne ouverte</span>
             </a>
             <a
               href={`mailto:${office.email}`}
-              className="rounded-full border-2 border-[#020d22] bg-[#020d22] px-6 py-3 text-base font-bold text-white transition hover:bg-[#06172f] lg:px-8 lg:py-4 lg:text-xl"
+              className="rounded-full border-2 border-[#DCE7F4] bg-[#0D4595] px-6 py-3 text-base font-bold text-white transition hover:bg-[#0A3777] lg:px-8 lg:py-4 lg:text-xl"
             >
               Envoyer un email
             </a>
@@ -53,34 +53,34 @@ export function Contact() {
             <input
               type="text"
               placeholder="Prénom"
-              className="h-12 rounded-full border border-slate-400 px-5 text-sm font-semibold outline-none transition focus:border-[#020d22] focus:ring-2 focus:ring-[#020d22]/10 lg:h-14 lg:text-base"
+              className="h-12 rounded-full border border-slate-400 px-5 text-sm font-semibold outline-none transition focus:border-[#0D4595] focus:ring-2 focus:ring-[#0D4595]/10 lg:h-14 lg:text-base"
             />
             <input
               type="text"
               placeholder="Nom de famille"
-              className="h-12 rounded-full border border-slate-400 px-5 text-sm font-semibold outline-none transition focus:border-[#020d22] focus:ring-2 focus:ring-[#020d22]/10 lg:h-14 lg:text-base"
+              className="h-12 rounded-full border border-slate-400 px-5 text-sm font-semibold outline-none transition focus:border-[#0D4595] focus:ring-2 focus:ring-[#0D4595]/10 lg:h-14 lg:text-base"
             />
             <input
               type="tel"
               placeholder="Numéro de téléphone"
-              className="h-12 rounded-full border border-slate-400 px-5 text-sm font-semibold outline-none transition focus:border-[#020d22] focus:ring-2 focus:ring-[#020d22]/10 lg:h-14 lg:text-base"
+              className="h-12 rounded-full border border-slate-400 px-5 text-sm font-semibold outline-none transition focus:border-[#0D4595] focus:ring-2 focus:ring-[#0D4595]/10 lg:h-14 lg:text-base"
             />
             <input
               type="email"
               placeholder="Adresse email"
-              className="h-12 rounded-full border border-slate-400 px-5 text-sm font-semibold outline-none transition focus:border-[#020d22] focus:ring-2 focus:ring-[#020d22]/10 lg:h-14 lg:text-base"
+              className="h-12 rounded-full border border-slate-400 px-5 text-sm font-semibold outline-none transition focus:border-[#0D4595] focus:ring-2 focus:ring-[#0D4595]/10 lg:h-14 lg:text-base"
             />
           </div>
 
           <textarea
             rows={5}
             placeholder="Comment pouvons-nous vous aider?"
-            className="mt-4 w-full rounded-[24px] border border-slate-400 px-5 py-4 text-sm font-semibold outline-none transition focus:border-[#020d22] focus:ring-2 focus:ring-[#020d22]/10 lg:text-base"
+            className="mt-4 w-full rounded-[24px] border border-slate-400 px-5 py-4 text-sm font-semibold outline-none transition focus:border-[#0D4595] focus:ring-2 focus:ring-[#0D4595]/10 lg:text-base"
           />
 
           <button
             type="button"
-            className="mt-6 rounded-full bg-[#020d22] px-7 py-3 text-base font-bold text-white transition hover:bg-[#06172f] lg:px-8 lg:py-4 lg:text-lg"
+            className="mt-6 rounded-full bg-[#0D4595] px-7 py-3 text-base font-bold text-white transition hover:bg-[#0A3777] lg:px-8 lg:py-4 lg:text-lg"
           >
             Envoyez
           </button>

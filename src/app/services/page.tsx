@@ -61,7 +61,7 @@ export default async function ServicesPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#13293a]/78 via-[#13293a]/24 to-transparent" />
 
                   <div className="relative z-10 flex min-h-[280px] flex-col justify-end sm:min-h-[304px] lg:min-h-[322px]">
-                    <h2 className="font-serif text-2xl uppercase leading-tight tracking-[0.03em] text-[#020d22] sm:text-3xl lg:text-4xl">
+                    <h2 className="font-serif text-2xl uppercase leading-tight tracking-[0.03em] text-[#DCE7F4] sm:text-3xl lg:text-4xl">
                       {service.title}
                     </h2>
 
@@ -75,7 +75,7 @@ export default async function ServicesPage() {
 
                     <Link
                       href="/book-appointment"
-                      className={`mt-8 inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.14em] text-white transition hover:text-[#020d22] sm:text-sm ${
+                      className={`mt-8 inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.14em] text-white transition hover:text-[#DCE7F4] sm:text-sm ${
                         index % 2 === 0 ? "justify-center" : ""
                       }`}
                     >

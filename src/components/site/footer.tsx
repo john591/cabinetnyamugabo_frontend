@@ -8,7 +8,7 @@ export function Footer() {
   return (
     <footer
       id="contact"
-      className="border-t border-[#020d22]/18 bg-[linear-gradient(180deg,#020d22_0%,#04142b_62%,#020914_100%)] px-4 py-10 text-[#dce7f4] sm:px-6 sm:py-12 lg:px-8 lg:py-14"
+      className="border-t border-[rgba(13,69,149,0.18)] bg-[linear-gradient(180deg,#0D4595_0%,#0A3777_62%,#08264F_100%)] px-4 py-10 text-[#dce7f4] sm:px-6 sm:py-12 lg:px-8 lg:py-14"
     >
       <div className="mx-auto grid w-full max-w-7xl gap-9 md:gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
         <div className="space-y-4 sm:space-y-5">
