@@ -1,14 +1,14 @@
 const footerLinks = {
   "Le Cabinet": ["À propos", "Domaines de pratique", "Études de cas"],
   resources: ["Perspectives", "FAQ", "Prise en charge des clients"],
-  contact: ["Kinshasa", "+243 000 000 000", "noreply@cabinetnyamugabo.com"],
+  contact: ["Kinshasa", "+243 999 163 935", "contact@cabinetnyamugabo.com"],
 };
 
 export function Footer() {
   return (
     <footer
       id="contact"
-      className="border-t border-[#d8b35f]/18 bg-[linear-gradient(180deg,#020d22_0%,#04142b_62%,#020914_100%)] px-4 py-10 text-[#dce7f4] sm:px-6 sm:py-12 lg:px-8 lg:py-14"
+      className="border-t border-[#020d22]/18 bg-[linear-gradient(180deg,#020d22_0%,#04142b_62%,#020914_100%)] px-4 py-10 text-[#dce7f4] sm:px-6 sm:py-12 lg:px-8 lg:py-14"
     >
       <div className="mx-auto grid w-full max-w-7xl gap-9 md:gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
         <div className="space-y-4 sm:space-y-5">

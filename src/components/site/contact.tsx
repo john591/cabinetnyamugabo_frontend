@@ -23,8 +23,8 @@ export function Contact() {
 
           <h2 className="mt-6 max-w-4xl text-4xl font-bold leading-[1.02] tracking-tight sm:text-5xl md:text-[3.5rem] lg:mt-8 lg:text-8xl lg:leading-[0.95]">
             Experts en
-            <span className="block text-[#d8b35f]">requêtes &amp;</span>
-            <span className="block text-[#d8b35f]">consultations</span>
+            <span className="block text-[#020d22]">requêtes &amp;</span>
+            <span className="block text-[#020d22]">consultations</span>
           </h2>
 
           <div className="mt-10 flex flex-wrap items-center gap-5">
@@ -37,7 +37,7 @@ export function Contact() {
             </a>
             <a
               href={`mailto:${office.email}`}
-              className="rounded-full border-2 border-[#d8b35f] bg-[#020d22] px-6 py-3 text-base font-bold text-white transition hover:bg-[#06172f] lg:px-8 lg:py-4 lg:text-xl"
+              className="rounded-full border-2 border-[#020d22] bg-[#020d22] px-6 py-3 text-base font-bold text-white transition hover:bg-[#06172f] lg:px-8 lg:py-4 lg:text-xl"
             >
               Envoyer un email
             </a>

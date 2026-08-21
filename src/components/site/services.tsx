@@ -89,7 +89,7 @@ export async function Services() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#020d22]/58 via-[#020d22]/12 to-transparent" />
 
               <div className="relative z-10 flex min-h-[280px] flex-col justify-end sm:min-h-[304px] lg:min-h-[322px]">
-                <h3 className="font-serif text-2xl uppercase leading-tight tracking-[0.03em] text-[#d8b35f] sm:text-3xl lg:text-4xl">
+                <h3 className="font-serif text-2xl uppercase leading-tight tracking-[0.03em] text-[#020d22] sm:text-3xl lg:text-4xl">
                   {service.title}
                 </h3>
 
@@ -103,7 +103,7 @@ export async function Services() {
 
                 <Link
                   href="/services"
-                  className={`mt-8 inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.14em] text-white transition hover:text-[#d8b35f] sm:text-sm ${
+                  className={`mt-8 inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.14em] text-white transition hover:text-[#020d22] sm:text-sm ${
                     index % 2 === 0 ? "justify-center" : ""
                   }`}
                 >
@@ -117,7 +117,7 @@ export async function Services() {
         <div className="mt-10 flex justify-center">
           <Link
             href="/services"
-            className="inline-flex items-center justify-center gap-3 border border-[#d8b35f]/45 px-6 py-4 text-center text-xs font-bold uppercase tracking-[0.14em] text-white transition hover:border-[#d8b35f] hover:text-[#d8b35f] sm:text-sm"
+            className="inline-flex items-center justify-center gap-3 border border-[#020d22]/45 px-6 py-4 text-center text-xs font-bold uppercase tracking-[0.14em] text-white transition hover:border-[#020d22] hover:text-[#020d22] sm:text-sm"
           >
             Tous nos domaines d&apos;expertise <span aria-hidden>→</span>
           </Link>
