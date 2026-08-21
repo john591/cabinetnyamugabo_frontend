@@ -9,7 +9,7 @@ const logoUrl =
   "https://nyamugabo-bucket.s3.us-west-2.amazonaws.com/media/logo/logo-cabinet.png";
 
 const primaryLinks = [
-   "Home",
+  "Home",
   "Appropos de Nous",
   "Services",
   'Notre Equipe',
@@ -238,7 +238,7 @@ export function Navbar() {
                   </p>
                   <div className="mt-4 space-y-3 text-sm leading-7 text-slate-700">
                     <p>Kinshasa, Democratic Republic of the Congo</p>
-                    <p>contact@cabinetnyamugabo.org</p>
+                    <p>contact@cabinetnyamugabo.com</p>
                     <p>+243 000 000 000</p>
                   </div>
                 </div>

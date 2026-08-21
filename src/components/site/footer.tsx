@@ -1,14 +1,14 @@
 const footerLinks = {
   "Le Cabinet": ["À propos", "Domaines de pratique", "Études de cas"],
   resources: ["Perspectives", "FAQ", "Prise en charge des clients"],
-  contact: ["Kinshasa", "+243 000 000 000", "contact@cabinetnyamugabo.org"],
+  contact: ["Kinshasa", "+243 000 000 000", "noreply@cabinetnyamugabo.com"],
 };
 
 export function Footer() {
   return (
     <footer
       id="contact"
-      className="border-t border-[rgba(13,69,149,0.18)] bg-[linear-gradient(180deg,#0d4595_0%,#0b3772_62%,#08264f_100%)] px-4 py-10 text-[#dce7f4] sm:px-6 sm:py-12 lg:px-8 lg:py-14"
+      className="border-t border-[#d8b35f]/18 bg-[linear-gradient(180deg,#020d22_0%,#04142b_62%,#020914_100%)] px-4 py-10 text-[#dce7f4] sm:px-6 sm:py-12 lg:px-8 lg:py-14"
     >
       <div className="mx-auto grid w-full max-w-7xl gap-9 md:gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
         <div className="space-y-4 sm:space-y-5">
@@ -27,10 +27,10 @@ export function Footer() {
             besoins et à votre situation.
           </p>
           <a
-            href="mailto:contact@cabinetnyamugabo.org"
+            href="mailto:contact@cabinetnyamugabo.com"
             className="inline-flex max-w-full rounded-full border border-white/22 px-4 py-3 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[#d9f4ca] transition hover:bg-white/8 sm:px-6 sm:text-xs sm:tracking-[0.22em]"
           >
-            <span className="break-all">contact@cabinetnyamugabo.org</span>
+            <span className="break-all">contact@cabinetnyamugabo.com</span>
           </a>
         </div>
 

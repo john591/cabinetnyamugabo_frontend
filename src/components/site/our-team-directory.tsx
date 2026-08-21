@@ -179,10 +179,10 @@ export function OurTeamDirectory({ team }: OurTeamDirectoryProps) {
                         <p>{member.city}</p>
                         <p>{member.phone || "+243 000 000 000"}</p>
                         <a
-                          href={`mailto:${member.email || "contact@cabinetnyamugabo.org"}`}
+                          href={`mailto:${member.email || "contact@cabinetnyamugabo.com"}`}
                           className="break-words text-[#0d4595] transition hover:text-[#299122]"
                         >
-                          {member.email || "contact@cabinetnyamugabo.org"}
+                          {member.email || "contact@cabinetnyamugabo.com"}
                         </a>
                       </div>
                     </div>

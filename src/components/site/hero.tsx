@@ -102,27 +102,25 @@ export function Hero() {
           {slides.map((slide) => (
             <SwiperSlide key={slide.title}>
               <article className="grid min-h-screen overflow-hidden bg-white lg:h-screen lg:grid-cols-[1.08fr_0.92fr]">
-                <div className={`hero-panel relative flex items-center overflow-hidden px-5 py-10 sm:px-8 sm:py-12 md:px-10 lg:px-16 lg:py-14 ${slide.panelClassName}`}>
+                <div className={`hero-panel relative flex items-center overflow-hidden px-5 py-8 sm:px-8 sm:py-10 md:px-10 lg:px-16 lg:py-14 ${slide.panelClassName}`}>
                   <div className={`absolute inset-0 ${slide.overlayClassName}`} />
                   <div className={`absolute bottom-0 left-0 h-40 w-full ${slide.accentOverlayClassName}`} />
 
                   <div className="relative z-10 max-w-2xl">
-                    <p
-                      className={`text-[11px] font-semibold uppercase tracking-[0.14em] sm:text-sm ${slide.eyebrowClassName}`}
-                    >
+                    <p className={`text-[10px] font-semibold uppercase tracking-[0.12em] sm:text-xs lg:text-sm ${slide.eyebrowClassName}`}>
                       {slide.eyebrow}
                     </p>
-                    <h1 className="mt-4 font-serif text-3xl leading-[1.06] sm:mt-5 sm:text-4xl md:text-5xl lg:mt-6 lg:text-[5.5rem] lg:leading-[1.02]">
+                    <h1 className="mt-3 font-serif text-[2rem] leading-[1.08] sm:mt-4 sm:text-[2.45rem] md:text-[3.2rem] lg:mt-5 lg:text-[4.25rem] lg:leading-[1.03] xl:text-[4.75rem]">
                       {slide.title}
                     </h1>
-                    <p className={`mt-4 max-w-xl text-sm leading-7 sm:mt-5 sm:text-base md:leading-8 lg:mt-6 lg:text-lg ${slide.descriptionClassName}`}>
+                    <p className={`mt-4 max-w-xl text-[13px] leading-6 sm:mt-5 sm:text-sm md:text-base md:leading-7 lg:mt-6 ${slide.descriptionClassName}`}>
                       {slide.description}
                     </p>
 
                     <div className="mt-6 flex flex-col items-start gap-4 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6 lg:mt-10">
                       <Link
                         href="/book-appointment"
-                        className={`px-6 py-3 text-xs font-semibold uppercase tracking-[0.08em] sm:px-8 sm:py-4 sm:text-sm ${slide.buttonClassName}`}
+                        className={`px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.08em] sm:px-7 sm:py-4 sm:text-xs ${slide.buttonClassName}`}
                       >
                         En Savoir Plus
                       </Link>
