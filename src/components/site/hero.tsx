@@ -101,8 +101,8 @@ export function Hero() {
         >
           {slides.map((slide) => (
             <SwiperSlide key={slide.title}>
-              <article className="grid min-h-screen overflow-hidden bg-white lg:h-screen lg:grid-cols-[1.08fr_0.92fr]">
-                <div className={`hero-panel relative flex items-center overflow-hidden px-5 py-8 sm:px-8 sm:py-10 md:px-10 lg:px-16 lg:py-14 ${slide.panelClassName}`}>
+              <article className="grid overflow-hidden bg-white lg:h-screen lg:min-h-screen lg:grid-cols-[1.08fr_0.92fr]">
+                <div className={`hero-panel relative flex items-start overflow-hidden px-5 py-10 sm:px-8 sm:py-12 md:px-10 lg:items-center lg:px-16 lg:py-14 ${slide.panelClassName}`}>
                   <div className={`absolute inset-0 ${slide.overlayClassName}`} />
                   <div className={`absolute bottom-0 left-0 h-40 w-full ${slide.accentOverlayClassName}`} />
 
@@ -128,12 +128,15 @@ export function Hero() {
                   </div>
                 </div>
 
-                <div className="relative min-h-[320px] sm:min-h-[380px] lg:min-h-full">
+                <div className="relative aspect-[4/3] min-h-0 overflow-hidden border-t border-white/10 bg-[#08264F] sm:aspect-[16/10] lg:aspect-auto lg:min-h-full lg:border-t-0">
                   <div
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{ backgroundImage: `url(${slide.image})` }}
+                    className="absolute inset-0 bg-cover transition duration-700 hover:scale-[1.03]"
+                    style={{
+                      backgroundImage: `url(${slide.image})`,
+                      backgroundPosition: "center top",
+                    }}
                   />
-                  <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,255,255,0.08),transparent_18%,transparent_100%)]" />
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(13,69,149,0.08)_0%,transparent_34%,rgba(8,38,79,0.18)_100%)] lg:bg-[linear-gradient(90deg,rgba(255,255,255,0.08),transparent_18%,transparent_100%)]" />
                 </div>
               </article>
             </SwiperSlide>
