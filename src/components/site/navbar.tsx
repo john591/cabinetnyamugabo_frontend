@@ -113,15 +113,15 @@ export function Navbar() {
       </a>
 
       <header className="sticky top-0 z-50 border-b border-black/8 bg-white text-slate-950 shadow-[0_8px_24px_rgba(15,23,42,0.05)]">
-        <div className="mx-auto flex w-full max-w-[1600px] items-center justify-between gap-3 px-4 py-3 sm:gap-4 sm:px-6 sm:py-4 lg:px-8">
-          <div className="flex min-w-0 flex-1 items-center gap-3 sm:gap-5 lg:gap-8">
+        <div className="mx-auto grid w-full max-w-[1600px] grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 px-4 py-3 sm:gap-4 sm:px-6 sm:py-4 lg:px-8 2xl:grid-cols-[minmax(180px,0.55fr)_minmax(0,1.6fr)_minmax(220px,0.55fr)]">
+          <div className="flex min-w-0 items-center gap-3 sm:gap-5">
             <button
               type="button"
               aria-expanded={isOpen}
               aria-controls="site-navigation-panel"
               aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
               onClick={() => setIsOpen((open) => !open)}
-              className="inline-flex h-11 w-11 shrink-0 items-center justify-center border border-slate-300 text-slate-950 transition hover:border-slate-950 sm:h-14 sm:w-14"
+              className="inline-flex h-11 w-11 shrink-0 items-center justify-center border border-slate-300 text-slate-950 transition hover:border-slate-950 sm:h-14 sm:w-14 2xl:hidden"
             >
               <span className="relative h-3 w-5 sm:h-4 sm:w-7">
                 <span className="absolute left-0 top-0 h-px w-full bg-current" />
@@ -132,7 +132,7 @@ export function Navbar() {
 
             <Link
               href="/"
-              className="flex min-w-[120px] shrink-0 items-center sm:min-w-[160px]"
+              className="flex min-w-[86px] shrink-0 items-center sm:min-w-[128px] 2xl:min-w-[170px]"
             >
               <Image
                 src={logoUrl}
@@ -140,12 +140,12 @@ export function Navbar() {
                 width={230}
                 height={92}
                 priority
-                className="h-16 w-auto shrink-0 object-contain sm:h-20 lg:h-24"
+                className="h-12 w-auto shrink-0 object-contain sm:h-16 lg:h-20 2xl:h-24"
               />
             </Link>
           </div>
 
-          <nav className="hidden items-center gap-6 2xl:flex">
+          <nav className="hidden items-center justify-center gap-6 2xl:flex">
             {primaryLinks.map((item) => {
               const href = getHref(item);
               const isActive = isActiveHref(pathname, href);
@@ -167,7 +167,7 @@ export function Navbar() {
             })}
           </nav>
 
-          <div className="hidden min-w-0 flex-1 items-center justify-end gap-4 2xl:flex">
+          <div className="hidden min-w-0 items-center justify-end gap-4 2xl:flex">
 
             <Link
               href="/book-appointment"
@@ -178,14 +178,14 @@ export function Navbar() {
             </Link>
           </div>
 
-          <div className="flex min-w-0 flex-1 justify-end 2xl:hidden">
+          <div className="flex min-w-0 justify-end 2xl:hidden">
             <Link
               href="/book-appointment"
-              className="inline-flex items-center justify-center gap-2 border border-[#b91c1c] bg-[#b91c1c] px-3 py-2.5 text-[9px] font-semibold tracking-[0.18em] uppercase text-white shadow-[0_10px_24px_rgba(185,28,28,0.18)] transition duration-200 hover:-translate-y-0.5 hover:bg-[#991b1b] hover:shadow-[0_16px_34px_rgba(185,28,28,0.24)] active:translate-y-0 active:scale-[0.98] sm:px-5 sm:py-3 sm:text-[11px] sm:tracking-[0.22em]"
+              className="inline-flex items-center justify-center gap-1.5 border border-[#b91c1c] bg-[#b91c1c] px-3 py-2.5 text-[8px] font-semibold tracking-[0.12em] uppercase text-white shadow-[0_10px_24px_rgba(185,28,28,0.18)] transition duration-200 hover:-translate-y-0.5 hover:bg-[#991b1b] hover:shadow-[0_16px_34px_rgba(185,28,28,0.24)] active:translate-y-0 active:scale-[0.98] sm:gap-2 sm:px-5 sm:py-3 sm:text-[11px] sm:tracking-[0.22em]"
             >
               <AppointmentIcon />
               <span className="hidden sm:inline">Prendre Rendez-Vous</span>
-              <span className="sm:hidden">Prendre Rendez-Vous</span>
+              <span className="sm:hidden">Rendez-vous</span>
             </Link>
           </div>
         </div>
