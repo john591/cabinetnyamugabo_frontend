@@ -67,7 +67,7 @@ export async function Services() {
   const displayedServices = services.slice(0, 6);
 
   return (
-    <section className="bg-[#0D4595] px-5 py-14 text-white sm:px-8 sm:py-16 lg:px-12 lg:py-20">
+    <section className="bg-[#13293a] px-5 py-14 text-white sm:px-8 sm:py-16 lg:px-12 lg:py-20">
       <div className="mx-auto max-w-7xl">
         <h2 className="text-center font-serif text-3xl uppercase leading-tight tracking-[0.03em] text-white sm:text-4xl md:text-5xl">
           Les domaines d&apos;expertise
@@ -77,19 +77,19 @@ export async function Services() {
           {displayedServices.map((service, index) => (
             <article
               key={service.id}
-              className={`relative min-h-[360px] overflow-hidden bg-[#0A3777] px-7 py-10 sm:min-h-[400px] sm:px-10 sm:py-12 lg:min-h-[450px] lg:px-14 lg:py-16 ${
+              className={`relative min-h-[360px] overflow-hidden bg-[#203446] px-7 py-10 sm:min-h-[400px] sm:px-10 sm:py-12 lg:min-h-[450px] lg:px-14 lg:py-16 ${
                 index % 2 === 0 ? "text-center" : "text-left"
               }`}
             >
               <div
-                className="absolute inset-0 bg-cover bg-center transition duration-700 hover:scale-[1.03]"
+                className="absolute inset-0 bg-cover bg-center opacity-38 transition duration-700 hover:scale-[1.03]"
                 style={{ backgroundImage: `url(${service.image})` }}
               />
-              <div className="absolute inset-0 bg-[#0D4595]/18" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#08264F]/58 via-[#0D4595]/12 to-transparent" />
+              <div className="absolute inset-0 bg-[#13293a]/78" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#13293a]/92 via-[#13293a]/55 to-transparent" />
 
               <div className="relative z-10 flex min-h-[280px] flex-col justify-end sm:min-h-[304px] lg:min-h-[322px]">
-                <h3 className="font-serif text-2xl uppercase leading-tight tracking-[0.03em] text-[#DCE7F4] sm:text-3xl lg:text-4xl">
+                <h3 className="font-serif text-2xl uppercase leading-tight tracking-[0.03em] text-[#c99d78] sm:text-3xl lg:text-4xl">
                   {service.title}
                 </h3>
 
@@ -103,7 +103,7 @@ export async function Services() {
 
                 <Link
                   href="/services"
-                  className={`mt-8 inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.14em] text-white transition hover:text-[#DCE7F4] sm:text-sm ${
+                  className={`mt-8 inline-flex items-center gap-3 text-xs font-bold uppercase tracking-[0.14em] text-white transition hover:text-[#c99d78] sm:text-sm ${
                     index % 2 === 0 ? "justify-center" : ""
                   }`}
                 >
@@ -117,7 +117,7 @@ export async function Services() {
         <div className="mt-10 flex justify-center">
           <Link
             href="/services"
-            className="inline-flex items-center justify-center gap-3 border border-white/45 px-6 py-4 text-center text-xs font-bold uppercase tracking-[0.14em] text-white transition hover:border-[#DCE7F4] hover:text-[#DCE7F4] sm:text-sm"
+            className="inline-flex items-center justify-center gap-3 border border-white/35 px-6 py-4 text-center text-xs font-bold uppercase tracking-[0.14em] text-white transition hover:border-[#c99d78] hover:text-[#c99d78] sm:text-sm"
           >
             Tous nos domaines d&apos;expertise <span aria-hidden>→</span>
           </Link>

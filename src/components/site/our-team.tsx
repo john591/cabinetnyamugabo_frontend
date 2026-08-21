@@ -53,7 +53,7 @@ export function OurTeam({ team: initialTeam }: OurTeamProps) {
   }
 
   return (
-    <section id="team" className="overflow-hidden bg-white pb-10 sm:pb-12">
+    <section id="team" className="overflow-hidden bg-white">
 
       <div className="mx-auto max-w-7xl px-5 pb-6 pt-10 sm:px-6 sm:pt-12 lg:px-8">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
