@@ -49,7 +49,7 @@ export function OurTeamDirectory({ team }: OurTeamDirectoryProps) {
       <section className="relative isolate flex min-h-[360px] items-center justify-center overflow-hidden border-b border-[rgba(13,69,149,0.12)] bg-slate-950 px-4 py-16 text-center sm:min-h-[460px] sm:px-6 sm:py-20 lg:min-h-[540px] lg:px-8">
         <Image
           src="https://nyamugabo-bucket.s3.us-west-2.amazonaws.com/black-lawyers-team-hero.png"
-          alt="Equipe d'avocats du Cabinet Nyamugabo"
+          alt="Équipe d'avocats du Cabinet Nyamugabo"
           fill
           priority
           sizes="100vw"

@@ -2,7 +2,10 @@ import Link from "next/link";
 
 import { Footer } from "@/components/site/footer";
 import { Navbar } from "@/components/site/navbar";
+import { PoleIcon } from "@/components/site/pole-icon";
 import { getServices } from "@/lib/django-api";
+import { getT } from "@/lib/i18n/server";
+import { getPoleId, poles } from "@/lib/poles";
 
 export const dynamic = "force-dynamic";
 
@@ -14,6 +17,7 @@ const serviceImages = [
 ];
 
 export default async function ServicesPage() {
+  const { t } = await getT();
   const services = (await getServices()).map((service, index) => ({
     id: service.id,
     title: service.title,
@@ -34,11 +38,10 @@ export default async function ServicesPage() {
               
             </p>
             <h1 className="mx-auto mt-4 max-w-4xl text-center font-serif text-3xl uppercase leading-tight tracking-[0.03em] text-[#172a3a] sm:text-4xl md:text-5xl">
-              Les Domaines d&apos;intervention
+              {t("services.pageTitle")}
             </h1>
             <p className="mx-auto mt-5 max-w-3xl text-center text-sm leading-7 text-slate-600 sm:text-base sm:leading-8">
-              Des conseils juridiques structurés pour les entreprises, les
-              institutions et les particuliers qui doivent avancer avec clarté.
+              {t("services.pageIntro")}
             </p>
           </div>
         </section>
@@ -61,6 +64,20 @@ export default async function ServicesPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#13293a]/62 via-[#13293a]/16 to-transparent" />
 
                   <div className="relative z-10 flex min-h-[280px] flex-col justify-end sm:min-h-[304px] lg:min-h-[322px]">
+                    <span
+                      className={`mb-4 inline-flex w-fit items-center gap-2 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-white ${
+                        index % 2 === 0 ? "mx-auto" : ""
+                      }`}
+                      style={{
+                        backgroundColor: poles[getPoleId(service.title)].color,
+                      }}
+                    >
+                      <PoleIcon
+                        pole={getPoleId(service.title)}
+                        className="h-4 w-4"
+                      />
+                      {t(`pole.${getPoleId(service.title)}.name`)}
+                    </span>
                     <h2 className="font-serif text-2xl uppercase leading-tight tracking-[0.03em] text-[#DCE7F4] sm:text-3xl lg:text-4xl">
                       {service.title}
                     </h2>
@@ -79,7 +96,7 @@ export default async function ServicesPage() {
                         index % 2 === 0 ? "justify-center" : ""
                       }`}
                     >
-                      Prendre rendez-vous <span aria-hidden>→</span>
+                      {t("services.book")} <span aria-hidden>→</span>
                     </Link>
                   </div>
                 </article>

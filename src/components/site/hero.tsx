@@ -2,18 +2,30 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+
+import { useT } from "@/lib/i18n/client";
+import type { DictKey } from "@/lib/i18n/dictionaries";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 const heroVideoUrl =
   "https://cabinet-nyamugabo.s3.us-west-2.amazonaws.com/videos/Nyamugabo___Expertise_en_RDC.mp4";
 
-const slides = [ 
+type Slide = {
+  eyebrow: DictKey;
+  href: string;
+  title: DictKey;
+  description: DictKey;
+  [key: string]: string;
+};
+
+const slides: Slide[] = [ 
   {
-    eyebrow: "Le Cabinet Nyamugabo",
-    title: "Notre mission : offrir des services juridiques de qualité supérieure en RDC.",
+    eyebrow: "hero.s1.eyebrow",
+    href: "/about-us",
+    title: "hero.s1.title",
     description:
-      "Le cabinet Nyamugabo accompagne les particuliers et les entreprises en leur offrant des services juridiques complets, allant du conseil à la représentation en justice, avec une expertise en droit des affaires, fiscal et contentieux.",
+      "hero.s1.desc",
     image:
       "https://nyamugabo-bucket.s3.us-west-2.amazonaws.com/media/claude-nyamugabo1.jpeg",
     panelClassName: "bg-[#0d4595] text-white",
@@ -28,10 +40,11 @@ const slides = [
     playClassName: "bg-white text-[#299122]",
   },
   {
-    eyebrow: "Departement juridique",
-    title: "Notre expertise juridique pour votre succès.",
+    eyebrow: "hero.s2.eyebrow",
+    href: "/services",
+    title: "hero.s2.title",
     description:
-      "Le département juridique du cabinet Nyamugabo fournit des services complets de conseil et de représentation, en garantissant la conformité, la maîtrise des risques et la protection des intérêts de ses clients.",
+      "hero.s2.desc",
     image:
       "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1800&q=80",
     panelClassName: "bg-[#0d4595] text-white",
@@ -46,10 +59,11 @@ const slides = [
     playClassName: "bg-white text-[#299122]",
   },
   {
-    eyebrow: "Departement environnemental",
-    title: "L'environnement pour notre bien etre.",
+    eyebrow: "hero.s3.eyebrow",
+    href: "/environment",
+    title: "hero.s3.title",
     description:
-      "Cabinet d’avocats à vocation générale, Nyamugabo intègre en son sein un département dédié aux questions environnementales, apportant une expertise pointue en matière de conformité, de gestion des risques et de projets à impact.",
+      "hero.s3.desc",
     image:
       "https://images.unsplash.com/photo-1473773508845-188df298d2d1?auto=format&fit=crop&w=1800&q=80",
     panelClassName: "bg-[#dff4d2] text-[#24303a]",
@@ -66,6 +80,7 @@ const slides = [
 ];
 
 export function Hero() {
+  const t = useT();
   const [isVideoOpen, setIsVideoOpen] = useState(false);
 
   useEffect(() => {
@@ -100,7 +115,7 @@ export function Hero() {
           className="hero-swiper h-full overflow-hidden"
         >
           {slides.map((slide) => (
-            <SwiperSlide key={slide.title}>
+            <SwiperSlide key={t(slide.title)}>
               <article className="grid overflow-hidden bg-white lg:h-screen lg:min-h-screen lg:grid-cols-[1.08fr_0.92fr]">
                 <div className={`hero-panel relative flex items-start overflow-hidden px-5 py-10 sm:px-8 sm:py-12 md:px-10 lg:items-center lg:px-16 lg:py-14 ${slide.panelClassName}`}>
                   <div className={`absolute inset-0 ${slide.overlayClassName}`} />
@@ -108,21 +123,21 @@ export function Hero() {
 
                   <div className="relative z-10 max-w-2xl">
                     <p className={`text-[10px] font-semibold uppercase tracking-[0.12em] sm:text-xs lg:text-sm ${slide.eyebrowClassName}`}>
-                      {slide.eyebrow}
+                      {t(slide.eyebrow)}
                     </p>
                     <h1 className="mt-3 font-serif text-[2rem] leading-[1.08] sm:mt-4 sm:text-[2.45rem] md:text-[3.2rem] lg:mt-5 lg:text-[4.25rem] lg:leading-[1.03] xl:text-[4.75rem]">
-                      {slide.title}
+                      {t(slide.title)}
                     </h1>
                     <p className={`mt-4 max-w-xl text-[13px] leading-6 sm:mt-5 sm:text-sm md:text-base md:leading-7 lg:mt-6 ${slide.descriptionClassName}`}>
-                      {slide.description}
+                      {t(slide.description)}
                     </p>
 
                     <div className="mt-6 flex flex-col items-start gap-4 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center sm:gap-6 lg:mt-10">
                       <Link
-                        href="/book-appointment"
+                        href={slide.href}
                         className={`px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.08em] sm:px-7 sm:py-4 sm:text-xs ${slide.buttonClassName}`}
                       >
-                        En Savoir Plus
+                        {t("hero.more")}
                       </Link>
                     </div>
                   </div>

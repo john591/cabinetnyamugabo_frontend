@@ -1,11 +1,18 @@
+import { getT } from "@/lib/i18n/server";
+
 const office = {
-  phone: "+243 000 000 000",
-  email: "noreply@cabinetnyamugabo.com",
+  phone: "+243 999 163 935",
+  email: "contact@cabinetnyamugabo.com",
 };
 
-export function Contact() {
+export async function Contact() {
+  const { t } = await getT();
+
   return (
-    <section id="contact" className="relative min-h-[640px] overflow-hidden bg-black text-white">
+    <section
+      id="contact"
+      className="relative min-h-[640px] overflow-hidden bg-black text-white"
+    >
       <div
         className="absolute inset-0 bg-cover bg-center opacity-72"
         style={{
@@ -18,13 +25,13 @@ export function Contact() {
       <div className="relative z-10 mx-auto grid min-h-[640px] max-w-7xl gap-10 px-5 py-10 sm:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(440px,0.72fr)] lg:items-center lg:px-12">
         <div>
           <p className="max-w-3xl text-lg font-semibold leading-tight sm:text-xl lg:text-2xl">
-            Engagés. Réactifs. Proches de vos enjeux.
+            {t("contact.tagline")}
           </p>
 
           <h2 className="mt-6 max-w-4xl text-4xl font-bold leading-[1.02] tracking-tight sm:text-5xl md:text-[3.5rem] lg:mt-8 lg:text-8xl lg:leading-[0.95]">
-            Experts en
-            <span className="block text-[#0D4595]">requêtes &amp;</span>
-            <span className="block text-[#0D4595]">consultations</span>
+            {t("contact.h1")}
+            <span className="block text-[#0D4595]">{t("contact.h2")}</span>
+            <span className="block text-[#0D4595]">{t("contact.h3")}</span>
           </h2>
 
           <div className="mt-10 flex flex-wrap items-center gap-5">
@@ -32,49 +39,51 @@ export function Contact() {
               href={`tel:${office.phone.replace(/\s+/g, "")}`}
               className="rounded-full bg-[#0D4595] px-6 py-3 text-center text-base font-bold text-white transition hover:bg-[#0A3777] lg:px-8 lg:py-4 lg:text-xl"
             >
-              Appeler {office.phone}
-              <span className="block text-xs font-bold">Ligne ouverte</span>
+              {t("contact.call")} {office.phone}
+              <span className="block text-xs font-bold">
+                {t("contact.openLine")}
+              </span>
             </a>
             <a
               href={`mailto:${office.email}`}
               className="rounded-full border-2 border-[#DCE7F4] bg-[#0D4595] px-6 py-3 text-base font-bold text-white transition hover:bg-[#0A3777] lg:px-8 lg:py-4 lg:text-xl"
             >
-              Envoyer un email
+              {t("contact.email")}
             </a>
           </div>
         </div>
 
         <form className="rounded-[28px] bg-white p-7 text-slate-950 shadow-[0_30px_80px_rgba(0,0,0,0.45)] sm:p-9">
           <h3 className="text-2xl font-bold leading-tight lg:text-4xl">
-            Une question? Ecrivez-nous.
+            {t("contact.formTitle")}
           </h3>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
             <input
               type="text"
-              placeholder="Prénom"
+              placeholder={t("contact.firstName")}
               className="h-12 rounded-full border border-slate-400 px-5 text-sm font-semibold outline-none transition focus:border-[#0D4595] focus:ring-2 focus:ring-[#0D4595]/10 lg:h-14 lg:text-base"
             />
             <input
               type="text"
-              placeholder="Nom de famille"
+              placeholder={t("contact.lastName")}
               className="h-12 rounded-full border border-slate-400 px-5 text-sm font-semibold outline-none transition focus:border-[#0D4595] focus:ring-2 focus:ring-[#0D4595]/10 lg:h-14 lg:text-base"
             />
             <input
               type="tel"
-              placeholder="Numéro de téléphone"
+              placeholder={t("contact.phone")}
               className="h-12 rounded-full border border-slate-400 px-5 text-sm font-semibold outline-none transition focus:border-[#0D4595] focus:ring-2 focus:ring-[#0D4595]/10 lg:h-14 lg:text-base"
             />
             <input
               type="email"
-              placeholder="Adresse email"
+              placeholder={t("contact.emailField")}
               className="h-12 rounded-full border border-slate-400 px-5 text-sm font-semibold outline-none transition focus:border-[#0D4595] focus:ring-2 focus:ring-[#0D4595]/10 lg:h-14 lg:text-base"
             />
           </div>
 
           <textarea
             rows={5}
-            placeholder="Comment pouvons-nous vous aider?"
+            placeholder={t("contact.message")}
             className="mt-4 w-full rounded-[24px] border border-slate-400 px-5 py-4 text-sm font-semibold outline-none transition focus:border-[#0D4595] focus:ring-2 focus:ring-[#0D4595]/10 lg:text-base"
           />
 
@@ -82,7 +91,7 @@ export function Contact() {
             type="button"
             className="mt-6 rounded-full bg-[#0D4595] px-7 py-3 text-base font-bold text-white transition hover:bg-[#0A3777] lg:px-8 lg:py-4 lg:text-lg"
           >
-            Envoyez
+            {t("contact.send")}
           </button>
         </form>
       </div>

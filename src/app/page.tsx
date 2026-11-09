@@ -3,6 +3,7 @@ import { Footer } from "@/components/site/footer";
 import { Hero } from "@/components/site/hero";
 import { Navbar } from "@/components/site/navbar";
 import { News } from "@/components/site/news";
+import { Poles } from "@/components/site/poles";
 import { OurTeam } from "@/components/site/our-team";
 import { Services } from "@/components/site/services";
 import { WhyChooseUs } from "@/components/site/why-choose-us";
@@ -18,6 +19,7 @@ export default async function Home() {
       <Navbar />
       <main id="main-content">
         <Hero />
+        <Poles />
         <WhyChooseUs />
         <Services />
         <OurTeam team={team} />

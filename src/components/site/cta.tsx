@@ -7,10 +7,10 @@ export function CTA() {
             CTA
           </p>
           <h2 className="mt-4 font-serif text-3xl leading-tight sm:text-4xl lg:text-5xl">
-            Besoin de conseils juridiques fiables pour une affaire delicate ?
+            Besoin de conseils juridiques fiables pour une affaire délicate ?
           </h2>
           <p className="mt-5 text-sm leading-7 text-white/78 sm:text-base lg:leading-8">
-            Contactez notre equipe au plus vite. Une strategie juridique efficace se met souvent en place avant meme que le probleme ne devienne urgent. Ne laissez pas les incertitudes juridiques vous submerger, prenez les devants et assurez la protection de vos droits des aujourd&apos;hui.
+            Contactez notre équipe au plus vite. Une stratégie juridique efficace se met souvent en place avant même que le problème ne devienne urgent. Ne laissez pas les incertitudes juridiques vous submerger, prenez les devants et assurez la protection de vos droits dès aujourd&apos;hui.
           </p>
         </div>
 

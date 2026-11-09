@@ -16,7 +16,7 @@ export const servicesData: ServiceItem[] = [
   },
   {
     title: "Études d'Impact Environnemental et Social (EIES)",
-    label: "Autre departement d'activites",
+    label: "Autre département d'activités",
     description:
       "Nous assistons les entreprises dans l'élaboration et la soumission de leurs Études d'Impact Environnemental et Social, document obligatoire pour l'obtention des autorisations d'exploitation.",
     image:

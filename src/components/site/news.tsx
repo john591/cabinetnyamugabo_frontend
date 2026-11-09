@@ -1,21 +1,23 @@
 import Link from "next/link";
 
+import { getT } from "@/lib/i18n/server";
 import { getPosts, mapPostToCard } from "@/lib/django-api";
 
 type NewsCard = ReturnType<typeof mapPostToCard>;
 
+const MAX_POSTS = 3;
+
+// Articles distincts uniquement (par slug), sans répétition.
 function getDisplayPosts(posts: NewsCard[]) {
-  if (posts.length >= 5) {
-    return posts.slice(0, 5);
-  }
+  const seen = new Set<string>();
 
-  const repeatedPosts = [...posts];
-
-  while (repeatedPosts.length > 0 && repeatedPosts.length < 5) {
-    repeatedPosts.push(posts[repeatedPosts.length % posts.length]);
-  }
-
-  return repeatedPosts;
+  return posts
+    .filter((post) => {
+      if (seen.has(post.slug)) return false;
+      seen.add(post.slug);
+      return true;
+    })
+    .slice(0, MAX_POSTS);
 }
 
 function NewsMeta({ post }: { post: NewsCard }) {
@@ -44,6 +46,7 @@ function AuthorLine({ post }: { post: NewsCard }) {
 }
 
 export async function News() {
+  const { t } = await getT();
   const posts = getDisplayPosts((await getPosts()).map(mapPostToCard));
 
   if (posts.length === 0) {
@@ -57,14 +60,14 @@ export async function News() {
       <div className="mx-auto max-w-7xl">
         <div className="flex items-start justify-between gap-6">
           <h2 className="text-3xl font-normal leading-tight text-black sm:text-4xl md:text-5xl lg:text-7xl lg:leading-none">
-            Nouvelles
+            {t("news.title")}
           </h2>
 
           <Link
             href="/news"
             className="hidden items-center gap-3 rounded-full bg-[#ffe8ef] px-5 py-3 text-sm text-[#ff3366] transition hover:bg-[#ffd8e4] sm:inline-flex lg:px-7 lg:py-4 lg:text-base"
           >
-            Page d&apos;actualités
+            {t("news.page")}
             <span className="text-2xl leading-none lg:text-3xl">→</span>
           </Link>
         </div>
@@ -117,41 +120,43 @@ export async function News() {
           ) : null}
         </div>
 
-        <div className="mt-6 grid gap-6 md:grid-cols-3">
-          {cards.slice(0, 3).map((post, index) => (
-            <Link
-              key={`${post.slug}-${index}`}
-              href={`/news/${post.slug}`}
-              className="group block"
-            >
-              <article className="flex h-full min-h-[430px] flex-col overflow-hidden rounded-2xl bg-[#f4f4f4] lg:min-h-[560px]">
-                <div className="aspect-[16/9] overflow-hidden bg-slate-100">
-                  <div
-                    className="h-full w-full bg-cover bg-center transition duration-700 group-hover:scale-[1.03]"
-                    style={{ backgroundImage: `url(${post.image})` }}
-                  />
-                </div>
+        {cards.length > 0 ? (
+          <div className="mt-6 grid gap-6">
+            {cards.map((post) => (
+              <Link
+                key={post.slug}
+                href={`/news/${post.slug}`}
+                className="group block"
+              >
+                <article className="flex h-full min-h-[430px] flex-col overflow-hidden rounded-2xl bg-[#f4f4f4] lg:min-h-[560px]">
+                  <div className="aspect-[16/9] overflow-hidden bg-slate-100">
+                    <div
+                      className="h-full w-full bg-cover bg-center transition duration-700 group-hover:scale-[1.03]"
+                      style={{ backgroundImage: `url(${post.image})` }}
+                    />
+                  </div>
 
-                <div className="flex flex-1 flex-col p-6 sm:p-8">
-                  <h3 className="text-2xl font-normal leading-tight text-black lg:text-3xl">
-                    {post.title}
-                  </h3>
-                  <NewsMeta post={post} />
-                  <p className="mt-3 text-sm leading-6 text-[#777] sm:text-base lg:mt-4 lg:text-lg lg:leading-7">
-                    {post.summary}
-                  </p>
-                  <AuthorLine post={post} />
-                </div>
-              </article>
-            </Link>
-          ))}
-        </div>
+                  <div className="flex flex-1 flex-col p-6 sm:p-8">
+                    <h3 className="text-2xl font-normal leading-tight text-black lg:text-3xl">
+                      {post.title}
+                    </h3>
+                    <NewsMeta post={post} />
+                    <p className="mt-3 text-sm leading-6 text-[#777] sm:text-base lg:mt-4 lg:text-lg lg:leading-7">
+                      {post.summary}
+                    </p>
+                    <AuthorLine post={post} />
+                  </div>
+                </article>
+              </Link>
+            ))}
+          </div>
+        ) : null}
 
         <Link
           href="/news"
           className="mt-8 inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#ffe8ef] px-6 py-3 text-sm text-[#ff3366] transition hover:bg-[#ffd8e4] sm:hidden"
         >
-          Page d&apos;actualités
+          {t("news.page")}
           <span className="text-2xl leading-none">→</span>
         </Link>
       </div>

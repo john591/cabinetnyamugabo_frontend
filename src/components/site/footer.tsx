@@ -1,10 +1,30 @@
-const footerLinks = {
-  "Le Cabinet": ["À propos", "Domaines de pratique", "Études de cas"],
-  resources: ["Perspectives", "FAQ", "Prise en charge des clients"],
-  contact: ["Kinshasa", "+243 999 163 935", "contact@cabinetnyamugabo.com"],
-};
+import Link from "next/link";
 
-export function Footer() {
+import { getT } from "@/lib/i18n/server";
+
+type FooterLink = { label: string; href?: string };
+export async function Footer() {
+  const { t } = await getT();
+
+  const footerLinks: Record<string, FooterLink[]> = {
+    [t("footer.firm")]: [
+      { label: t("footer.about"), href: "/about-us" },
+      { label: t("footer.practice"), href: "/services" },
+    ],
+    [t("footer.resources")]: [
+      { label: t("footer.insights"), href: "/news" },
+      { label: t("footer.client"), href: "/book-appointment" },
+    ],
+    [t("footer.contact")]: [
+      { label: t("footer.city") },
+      { label: "+243 999 163 935", href: "tel:+243999163935" },
+      {
+        label: "contact@cabinetnyamugabo.com",
+        href: "mailto:contact@cabinetnyamugabo.com",
+      },
+    ],
+  };
+
   return (
     <footer
       id="contact"
@@ -12,13 +32,14 @@ export function Footer() {
     >
       <div className="mx-auto grid w-full max-w-7xl gap-9 md:gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
         <div className="space-y-4 sm:space-y-5">
-          <p className="text-[0.68rem] uppercase tracking-[0.22em] text-[#b9eba2] sm:text-xs sm:tracking-[0.3em]">
-            Cabinet Nyamugabo
-          </p>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo/Horizontal_Blanc.svg"
+            alt="Cabinet Nyamugabo"
+            className="h-16 w-auto sm:h-20"
+          />
           <h2 className="max-w-2xl font-serif text-2xl leading-snug text-white sm:text-3xl md:text-[2.15rem] md:leading-tight lg:max-w-xl lg:text-4xl">
-            Nous sommes là pour vous apporter des solutions juridiques claires,
-            rapides et efficaces, afin que vous puissiez avancer avec confiance
-            dans vos projets et protéger ce qui compte le plus pour vous.
+            {t("footer.closing")}
           </h2>
           <p className="max-w-2xl text-sm leading-6 text-[#d4e2ef] sm:leading-7 lg:max-w-xl">
             Que vous prépariez une transaction, répondiez à un litige ou
@@ -42,8 +63,17 @@ export function Footer() {
               </h3>
               <ul className="mt-3 space-y-2.5 text-sm leading-6 text-[#e3edf6] sm:mt-4 sm:space-y-3">
                 {links.map((link) => (
-                  <li key={link} className="break-words">
-                    {link}
+                  <li key={link.label} className="break-words">
+                    {link.href ? (
+                      <Link
+                        href={link.href}
+                        className="transition hover:text-white hover:underline"
+                      >
+                        {link.label}
+                      </Link>
+                    ) : (
+                      link.label
+                    )}
                   </li>
                 ))}
               </ul>
@@ -53,7 +83,7 @@ export function Footer() {
       </div>
 
       <div className="mx-auto mt-9 flex w-full max-w-7xl flex-col gap-3 border-t border-white/12 pt-5 text-[0.65rem] uppercase leading-5 tracking-[0.1em] text-[#9fc0e4] sm:mt-11 sm:flex-row sm:items-center sm:justify-between sm:pt-6 sm:text-xs sm:tracking-[0.16em]">
-        <p>© 2026 Cabinet Nyamugabo. Tous droits réservés.</p>
+        <p>{t("footer.rights")}</p>
         <p className="max-w-xl sm:text-right">
           Conçu pour la confiance, la clarté et un plaidoyer solide.
         </p>

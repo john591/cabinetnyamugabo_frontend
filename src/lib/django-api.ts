@@ -373,7 +373,7 @@ export function mapTeamMemberToCard(member: DjangoTeamMember) {
     member.full_name || `${member.first_name ?? ""} ${member.last_name ?? ""}`.trim();
 
   return {
-    name: fullName || "Membre de l'equipe",
+    name: fullName || "Membre de l'équipe",
     role: member.role || "Avocat",
     bio: member.bio || "",
     city: "Kinshasa",

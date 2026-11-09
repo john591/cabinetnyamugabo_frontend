@@ -9,8 +9,8 @@ export default function AppointmentSuccessPage() {
       <main id="main-content">
         <AppointmentStatus
           eyebrow="Rendez-vous"
-          title="Demande de rendez-vous recue"
-          message="Merci. Votre adresse email a ete verifiee et votre demande a ete enregistree. Notre equipe va examiner votre date preferee et vous recontacter pour confirmer la consultation."
+          title="Demande de rendez-vous reçue"
+          message="Merci. Votre adresse email a été vérifiée et votre demande a été enregistrée. Notre équipe va examiner votre date préférée et vous recontacter pour confirmer la consultation."
           tone="success"
         />
       </main>

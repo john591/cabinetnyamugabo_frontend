@@ -1,6 +1,11 @@
 import Link from "next/link";
 
 import { getFeaturedServices } from "@/lib/django-api";
+import { getT } from "@/lib/i18n/server";
+import type { TFunction } from "@/lib/i18n/dictionaries";
+import { getPoleId, poles } from "@/lib/poles";
+
+import { PoleIcon } from "./pole-icon";
 
 type ServiceCard = {
   id: string | number;
@@ -49,7 +54,32 @@ const fallbackServices: ServiceCard[] = [
   },
 ];
 
+function PoleBadge({
+  title,
+  centered,
+  t,
+}: {
+  title: string;
+  centered: boolean;
+  t: TFunction;
+}) {
+  const pole = poles[getPoleId(title)];
+
+  return (
+    <span
+      className={`mb-4 inline-flex w-fit items-center gap-2 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-white ${
+        centered ? "mx-auto" : ""
+      }`}
+      style={{ backgroundColor: pole.color }}
+    >
+      <PoleIcon pole={pole.id} className="h-4 w-4" />
+      {t(`pole.${pole.id}.name`)}
+    </span>
+  );
+}
+
 export async function Services() {
+  const { t } = await getT();
   const featuredServices = await getFeaturedServices();
   const services =
     featuredServices.length > 0
@@ -70,7 +100,7 @@ export async function Services() {
     <section className="bg-[#13293a] px-5 py-14 text-white sm:px-8 sm:py-16 lg:px-12 lg:py-20">
       <div className="mx-auto max-w-7xl">
         <h2 className="text-center font-serif text-3xl uppercase leading-tight tracking-[0.03em] text-white sm:text-4xl md:text-5xl">
-          Les domaines d&apos;expertise
+          {t("services.title")}
         </h2>
 
         <div className="mt-9 grid gap-5 md:grid-cols-2 lg:mt-11 lg:gap-7">
@@ -89,6 +119,7 @@ export async function Services() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#13293a]/62 via-[#13293a]/16 to-transparent" />
 
               <div className="relative z-10 flex min-h-[280px] flex-col justify-end sm:min-h-[304px] lg:min-h-[322px]">
+                <PoleBadge title={service.title} centered={index % 2 === 0} t={t} />
                 <h3 className="font-serif text-2xl uppercase leading-tight tracking-[0.03em] text-white sm:text-3xl lg:text-4xl">
                   {service.title}
                 </h3>
@@ -107,7 +138,7 @@ export async function Services() {
                     index % 2 === 0 ? "justify-center" : ""
                   }`}
                 >
-                  Lire plus <span aria-hidden>→</span>
+                  {t("services.readMore")} <span aria-hidden>→</span>
                 </Link>
               </div>
             </article>
@@ -119,7 +150,7 @@ export async function Services() {
             href="/services"
             className="inline-flex items-center justify-center gap-3 border border-white/35 px-6 py-4 text-center text-xs font-bold uppercase tracking-[0.14em] text-white transition hover:border-[#DCE7F4] hover:text-[#DCE7F4] sm:text-sm"
           >
-            Tous nos domaines d&apos;expertise <span aria-hidden>→</span>
+            {t("services.all")} <span aria-hidden>→</span>
           </Link>
         </div>
       </div>

@@ -5,38 +5,31 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const logoUrl =
-  "https://nyamugabo-bucket.s3.us-west-2.amazonaws.com/media/logo/logo-cabinet.png";
+import { LanguageSwitcher, useT } from "@/lib/i18n/client";
+import type { DictKey } from "@/lib/i18n/dictionaries";
 
-const primaryLinks = [
-  "Home",
-  "Appropos de Nous",
-  "Services",
-  'Notre Equipe',
-  "Environnement",
-  "Articles",
+const logoUrl = "/logo/Horizontal_Couleur.svg";
+
+const primaryLinks: { key: DictKey; href: string }[] = [
+  { key: "nav.home", href: "/" },
+  { key: "nav.about", href: "/about-us" },
+  { key: "nav.services", href: "/services" },
+  { key: "nav.team", href: "/our-team" },
+  { key: "nav.environment", href: "/environment" },
+  { key: "nav.articles", href: "/news" },
 ];
 
-const mainSections = [
-  "Home",
-  "Appropos de Nous",
-  "Services",
-  'Notre Equipe',
-  "Environnement",
-  "Articles",
+const insightLinks: DictKey[] = [
+  "nav.founder",
+  "nav.otherLawyers",
+  "nav.resources",
 ];
 
-const insightLinks = [
-  "Le fondateur",
-  "Autres Avocats",
-  "Ressources",
-];
-
-const citizenshipLinks = [
-  "Notre ambition",
-  "L'impact de notre travail dans la communauté",
-  "Travailler avec nous",
-  "Devenir un partenaire",
+const citizenshipLinks: DictKey[] = [
+  "nav.ambition",
+  "nav.impact",
+  "nav.work",
+  "nav.partner",
 ];
 
 function AppointmentIcon() {
@@ -60,25 +53,6 @@ function AppointmentIcon() {
   );
 }
 
-function getHref(label: string) {
-  switch (label) {
-    case "Home":
-      return "/";
-    case "Appropos de Nous":
-      return "/about-us";
-    case "Services":
-      return "/services";
-    case "Notre Equipe":
-      return "/our-team";
-    case "Environnement":
-      return "/environment";
-    case "Articles":
-      return "/news";
-    default:
-      return "#";
-  }
-}
-
 function isActiveHref(pathname: string, href: string) {
   if (href === "/") {
     return pathname === "/";
@@ -94,6 +68,7 @@ function isActiveHref(pathname: string, href: string) {
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const t = useT();
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
@@ -109,7 +84,7 @@ export function Navbar() {
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-white focus:px-4 focus:py-3 focus:text-sm focus:font-semibold focus:text-slate-950"
       >
-        Skip to Main content
+        {t("nav.skip")}
       </a>
 
       <header className="sticky top-0 z-50 border-b border-black/8 bg-white text-slate-950 shadow-[0_8px_24px_rgba(15,23,42,0.05)]">
@@ -119,7 +94,7 @@ export function Navbar() {
               type="button"
               aria-expanded={isOpen}
               aria-controls="site-navigation-panel"
-              aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
+              aria-label={isOpen ? t("nav.closeMenu") : t("nav.openMenu")}
               onClick={() => setIsOpen((open) => !open)}
               className="inline-flex h-11 w-11 shrink-0 items-center justify-center border border-slate-300 text-slate-950 transition hover:border-slate-950 sm:h-14 sm:w-14 2xl:hidden"
             >
@@ -146,13 +121,12 @@ export function Navbar() {
           </div>
 
           <nav className="hidden items-center justify-center gap-6 2xl:flex">
-            {primaryLinks.map((item) => {
-              const href = getHref(item);
+            {primaryLinks.map(({ key, href }) => {
               const isActive = isActiveHref(pathname, href);
 
               return (
                 <Link
-                  key={item}
+                  key={key}
                   href={href}
                   aria-current={isActive ? "page" : undefined}
                   className={`relative pb-2 text-[11px] font-semibold tracking-[0.24em] uppercase transition after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-center after:bg-[#0d4595] after:transition-transform ${
@@ -161,31 +135,33 @@ export function Navbar() {
                       : "text-slate-800 after:scale-x-0 hover:text-[#0d4595] hover:after:scale-x-100"
                   }`}
                 >
-                  {item}
+                  {t(key)}
                 </Link>
               );
             })}
           </nav>
 
           <div className="hidden min-w-0 items-center justify-end gap-4 2xl:flex">
+            <LanguageSwitcher />
 
             <Link
               href="/book-appointment"
               className="inline-flex items-center justify-center gap-2.5 border border-[#b91c1c] bg-[#b91c1c] px-5 py-3 text-[11px] font-semibold tracking-[0.22em] uppercase text-white shadow-[0_12px_30px_rgba(185,28,28,0.18)] transition duration-200 hover:-translate-y-0.5 hover:bg-[#991b1b] hover:shadow-[0_18px_38px_rgba(185,28,28,0.24)] active:translate-y-0 active:scale-[0.98]"
             >
               <AppointmentIcon />
-              Prendre Rendez-Vous
+              {t("nav.book")}
             </Link>
           </div>
 
-          <div className="flex min-w-0 justify-end 2xl:hidden">
+          <div className="flex min-w-0 items-center justify-end gap-2 2xl:hidden">
+            <LanguageSwitcher className="hidden sm:inline-flex" />
             <Link
               href="/book-appointment"
               className="inline-flex items-center justify-center gap-1.5 border border-[#b91c1c] bg-[#b91c1c] px-3 py-2.5 text-[8px] font-semibold tracking-[0.12em] uppercase text-white shadow-[0_10px_24px_rgba(185,28,28,0.18)] transition duration-200 hover:-translate-y-0.5 hover:bg-[#991b1b] hover:shadow-[0_16px_34px_rgba(185,28,28,0.24)] active:translate-y-0 active:scale-[0.98] sm:gap-2 sm:px-5 sm:py-3 sm:text-[11px] sm:tracking-[0.22em]"
             >
               <AppointmentIcon />
-              <span className="hidden sm:inline">Prendre Rendez-Vous</span>
-              <span className="sm:hidden">Rendez-vous</span>
+              <span className="hidden sm:inline">{t("nav.book")}</span>
+              <span className="sm:hidden">{t("nav.bookShort")}</span>
             </Link>
           </div>
         </div>
@@ -194,7 +170,7 @@ export function Navbar() {
           <>
             <button
               type="button"
-              aria-label="Fermer le menu"
+              aria-label={t("nav.closeMenu")}
               className="fixed inset-0 z-40 bg-slate-950/28 backdrop-blur-[1px]"
               onClick={() => setIsOpen(false)}
             />
@@ -206,16 +182,15 @@ export function Navbar() {
               <div className="space-y-6 sm:space-y-8">
                 <div>
                   <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">
-                    Main Sections
+                    {t("nav.mainSections")}
                   </p>
                   <div className="mt-4 grid gap-2.5 sm:gap-3">
-                    {mainSections.map((item) => {
-                      const href = getHref(item);
+                    {primaryLinks.map(({ key, href }) => {
                       const isActive = isActiveHref(pathname, href);
 
                       return (
                         <Link
-                          key={item}
+                          key={key}
                           href={href}
                           aria-current={isActive ? "page" : undefined}
                           className={`relative w-fit pb-1 font-serif text-2xl transition after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:bg-[#0d4595] after:transition-transform sm:text-3xl ${
@@ -225,7 +200,7 @@ export function Navbar() {
                           }`}
                           onClick={() => setIsOpen(false)}
                         >
-                          {item}
+                          {t(key)}
                         </Link>
                       );
                     })}
@@ -234,12 +209,12 @@ export function Navbar() {
 
                 <div>
                   <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">
-                    Contact
+                    {t("nav.contact")}
                   </p>
                   <div className="mt-4 space-y-3 text-sm leading-7 text-slate-700">
-                    <p>Kinshasa, Democratic Republic of the Congo</p>
+                    <p>{t("nav.address")}</p>
                     <p>contact@cabinetnyamugabo.com</p>
-                    <p>+243 000 000 000</p>
+                    <p>+243 999 163 935</p>
                   </div>
                 </div>
               </div>
@@ -250,18 +225,18 @@ export function Navbar() {
                 <section className="space-y-4 border-t border-black/10 pt-4 md:border-t-0 md:pt-0">
                   <div className="flex items-center justify-between gap-4">
                     <h2 className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">
-                      Connaissances
+                      {t("nav.knowledge")}
                     </h2>
                   </div>
                   <div className="grid gap-3">
                     {insightLinks.map((item) => (
                       <Link
                         key={item}
-                        href={getHref(item)}
+                        href="#"
                         className="text-sm leading-6 text-slate-700 transition hover:text-[#0d4595]"
                         onClick={() => setIsOpen(false)}
                       >
-                        {item}
+                        {t(item)}
                       </Link>
                     ))}
                   </div>
@@ -269,7 +244,7 @@ export function Navbar() {
 
                 <section className="space-y-5 border-t border-black/10 pt-4 md:col-span-2 xl:col-span-1 xl:border-t-0 xl:pt-0">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">
-                    Autres liens
+                    {t("nav.otherLinks")}
                   </p>
                   <div className="grid gap-3">
                     {citizenshipLinks.map((item) => (
@@ -279,21 +254,21 @@ export function Navbar() {
                         className="text-sm leading-6 text-slate-700 transition hover:text-[#0d4595]"
                         onClick={() => setIsOpen(false)}
                       >
-                        {item}
+                        {t(item)}
                       </Link>
                     ))}
                   </div>
                 </section>
 
                 <section className="space-y-5 border-t border-black/10 pt-4 md:col-span-2 xl:col-span-1 xl:border-t-0 xl:pt-0">
-                
+                  <LanguageSwitcher className="sm:hidden" />
                   <Link
                     href="/book-appointment"
                     className="inline-flex w-full items-center justify-center gap-2.5 border border-[#b91c1c] bg-[#b91c1c] px-5 py-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-white shadow-[0_12px_30px_rgba(185,28,28,0.18)] transition duration-200 hover:-translate-y-0.5 hover:bg-[#991b1b] hover:shadow-[0_18px_38px_rgba(185,28,28,0.24)] active:translate-y-0 active:scale-[0.98] sm:w-fit"
                     onClick={() => setIsOpen(false)}
                   >
                     <AppointmentIcon />
-                    Prendre Rendez-Vous
+                    {t("nav.book")}
                   </Link>
                 </section>
               </div>

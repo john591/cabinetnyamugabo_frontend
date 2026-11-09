@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+
+import { useT } from "@/lib/i18n/client";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 type TeamMemberCard = {
@@ -18,6 +20,7 @@ type OurTeamProps = {
 };
 
 export function OurTeam({ team: initialTeam }: OurTeamProps) {
+  const t = useT();
   const [team, setTeam] = useState<TeamMemberCard[]>(initialTeam);
 
   useEffect(() => {
@@ -60,14 +63,13 @@ export function OurTeam({ team: initialTeam }: OurTeamProps) {
           <div className="max-w-4xl">
             <br /><br />
             <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-[#0d4595]">
-              Notre equipe
+              {t("team.kicker")}
             </p>
             <h2 className="mt-3 font-serif text-3xl leading-tight text-slate-950 sm:text-4xl lg:mt-4 lg:text-5xl">
-              Des professionnels proches de vos enjeux.
+              {t("team.title")}
             </h2>
             <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-600 sm:text-base lg:text-lg lg:leading-8">
-              Avocats, conseils et support juridique travaillent ensemble pour
-              offrir une gestion rigoureuse, claire et humaine de chaque dossier.
+              {t("team.intro")}
             </p>
           </div>
 
@@ -76,7 +78,7 @@ export function OurTeam({ team: initialTeam }: OurTeamProps) {
               type="button"
               onClick={() => scrollTeam("previous")}
               className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#0d4595] text-white transition hover:bg-[#0a3777] sm:h-12 sm:w-12"
-              aria-label="Voir le membre précédent"
+              aria-label={t("team.prev")}
             >
               <ChevronLeft aria-hidden className="h-6 w-6" strokeWidth={2} />
             </button>
@@ -84,7 +86,7 @@ export function OurTeam({ team: initialTeam }: OurTeamProps) {
               type="button"
               onClick={() => scrollTeam("next")}
               className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#0d4595] text-white transition hover:bg-[#0a3777] sm:h-12 sm:w-12"
-              aria-label="Voir le membre suivant"
+              aria-label={t("team.next")}
             >
               <ChevronRight aria-hidden className="h-6 w-6" strokeWidth={2} />
             </button>
@@ -110,7 +112,7 @@ export function OurTeam({ team: initialTeam }: OurTeamProps) {
 
             <div className="absolute inset-0 flex translate-y-6 flex-col justify-end bg-[#0d4595] px-7 py-8 text-white opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100 group-focus:translate-y-0 group-focus:opacity-100 sm:px-8 sm:py-10">
               <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-white/70">
-                Biographie
+                {t("team.bio")}
               </p>
               <h3 className="mt-4 font-serif text-3xl font-semibold leading-none sm:text-4xl lg:text-5xl">
                 {member.name}

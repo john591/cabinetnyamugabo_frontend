@@ -8,9 +8,9 @@ export default function AppointmentVerificationSentPage() {
       <Navbar />
       <main id="main-content">
         <AppointmentStatus
-          eyebrow="Verification"
-          title="Verifiez votre adresse email"
-          message="Nous vous avons envoye un lien de verification. Ouvrez ce lien pour finaliser votre demande de rendez-vous. La demande ne sera enregistree qu'apres cette verification."
+          eyebrow="Vérification"
+          title="Vérifiez votre adresse email"
+          message="Nous vous avons envoyé un lien de vérification. Ouvrez ce lien pour finaliser votre demande de rendez-vous. La demande ne sera enregistrée qu'après cette vérification."
           tone="notice"
         />
       </main>
